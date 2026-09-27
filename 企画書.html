@@ -1,0 +1,1149 @@
+<title>こねこのおつかい</title>
+<meta name="description" content="毛糸の町で、子猫がはじめてのおつかい。編み物の性質をルールにしたパズルに、お助けアイテム（広告・購入）と猫のアルバムを組み合わせた、年配の人向けゲームの企画書（第5版）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+:root{
+  --ground:#F2F3EB;
+  --surface:#FFFFFF;
+  --surface-2:#E7EADF;
+  --ink:#1C2520;
+  --ink-2:#45524A;
+  --line:#CBD1C1;
+  --ai:#274A7D;
+  --ai-soft:#DDE6F2;
+  --yamabuki:#A86F00;
+  --yamabuki-soft:#FBEFD1;
+  --enji:#9B3434;
+  --enji-soft:#F6E2DF;
+  --wakatake:#2C7550;
+  --wakatake-soft:#DCEEE3;
+  --font-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;
+  --font-disp:"Zen Maru Gothic","BIZ UDPGothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#131915;
+    --surface:#1B231E;
+    --surface-2:#232E27;
+    --ink:#E6EBE3;
+    --ink-2:#AEB9B0;
+    --line:#33403A;
+    --ai:#A3BEEA;
+    --ai-soft:#1F2F46;
+    --yamabuki:#F0BE4E;
+    --yamabuki-soft:#3A301B;
+    --enji:#EBA39B;
+    --enji-soft:#3C2523;
+    --wakatake:#86CFA4;
+    --wakatake-soft:#1C3527;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#131915;
+  --surface:#1B231E;
+  --surface-2:#232E27;
+  --ink:#E6EBE3;
+  --ink-2:#AEB9B0;
+  --line:#33403A;
+  --ai:#A3BEEA;
+  --ai-soft:#1F2F46;
+  --yamabuki:#F0BE4E;
+  --yamabuki-soft:#3A301B;
+  --enji:#EBA39B;
+  --enji-soft:#3C2523;
+  --wakatake:#86CFA4;
+  --wakatake-soft:#1C3527;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.85;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.page{max-width:1060px;margin:0 auto;padding-inline:20px;padding-block:36px 96px}
+a{color:var(--ai);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--yamabuki);outline-offset:3px;border-radius:4px}
+p{margin:0}
+.prose{max-width:44em;display:grid;gap:1em}
+h1,h2,h3,h4{font-family:var(--font-disp);text-wrap:balance;line-height:1.35;margin:0;font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+.note{font-size:14.5px;color:var(--ink-2);line-height:1.7;max-width:52em}
+
+/* 表紙 */
+.cover{display:grid;gap:22px;padding-block:8px 36px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--ink-2);font-weight:700}
+.title-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.title-row svg{width:clamp(64px,11vw,104px);height:auto;flex:none}
+.title{font-size:clamp(40px,8.4vw,80px);font-weight:900;letter-spacing:.06em;line-height:1.1}
+.title .kari{font-size:.27em;font-weight:700;letter-spacing:.08em;color:var(--ink-2);vertical-align:.9em;margin-left:.4em;white-space:nowrap}
+.catch{font-family:var(--font-disp);font-size:clamp(22px,3.6vw,31px);font-weight:700;line-height:1.5}
+.lead{max-width:42em;font-size:17.5px}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.spec div{padding:12px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);display:grid;gap:2px}
+.spec dt{font-size:13.5px;color:var(--ink-2);font-weight:700;letter-spacing:.06em}
+.spec dd{margin:0;font-size:16px;line-height:1.6}
+.toc{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0;padding:0;list-style:none;font-size:15px}
+.toc a{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--surface);min-height:40px}
+.toc a span{font-family:var(--font-disp);font-weight:900;color:var(--ai)}
+
+/* 章 */
+.sec{padding-block:56px 8px;display:grid;gap:24px;scroll-margin-top:12px}
+.sec-head{display:flex;align-items:center;gap:14px}
+.sec-no{flex:none;width:46px;height:46px;border-radius:50%;border:3px solid var(--ai);color:var(--ai);display:grid;place-items:center;font-family:var(--font-disp);font-weight:900;font-size:21px;line-height:1}
+.sec-head h2{font-size:clamp(24px,3.6vw,31px)}
+.sub{display:grid;gap:14px}
+.sub h3{font-size:21px}
+
+.say{font-family:var(--font-disp);font-weight:700;font-size:clamp(21px,3vw,26px);line-height:1.6;padding:22px 24px;border-radius:16px;background:var(--yamabuki-soft);max-width:42em}
+.say small{display:block;font-family:var(--font-body);font-weight:400;font-size:15.5px;margin-top:8px;color:var(--ink-2)}
+
+/* 数字 */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.stat b{font-family:var(--font-disp);font-size:36px;font-weight:900;line-height:1.1;color:var(--ai);font-variant-numeric:tabular-nums}
+.stat b small{font-size:18px}
+.stat span{font-size:15px;line-height:1.6}
+.stat cite{font-style:normal;font-size:12.5px;color:var(--ink-2)}
+
+/* 表 */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tbl table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.65}
+.tbl.wide table{min-width:680px}
+.tbl th,.tbl td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl thead th{background:var(--surface-2);font-size:14px;letter-spacing:.04em;white-space:nowrap}
+.tbl.keycol td:first-child{font-weight:700}
+.tbl td.nw{white-space:nowrap}
+.tbl .mine td{background:var(--yamabuki-soft)}
+.tbl .ours{background:var(--yamabuki-soft);font-weight:700}
+.tbl .good{color:var(--wakatake);font-weight:700}
+.tbl .bad{color:var(--enji);font-weight:700}
+.tbl td .ic{display:flex;align-items:center;gap:10px}
+.tbl td .ic svg{width:40px;height:40px;flex:none}
+sup.ref{font-size:11px;line-height:0;font-weight:700}
+sup.ref a{text-decoration:none}
+
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:f}
+.flow li{counter-increment:f;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.flow li::before{content:counter(f);font-family:var(--font-disp);font-weight:900;font-size:15px;width:30px;height:30px;border-radius:50%;background:var(--ai);color:var(--surface);display:grid;place-items:center}
+.flow b{font-size:17px}
+.flow span{font-size:15px;color:var(--ink-2);line-height:1.65}
+
+.list{margin:0;padding-left:1.3em;display:grid;gap:6px;max-width:48em}
+.list li::marker{color:var(--ai)}
+.steps{margin:0;padding-left:1.5em;display:grid;gap:8px;font-size:16px;max-width:48em}
+.steps li::marker{font-family:var(--font-disp);font-weight:900;color:var(--ai)}
+
+.axis{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.axis > div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px 18px;display:grid;gap:10px;align-content:start}
+.axis h4{font-size:19px}
+.axis .v{font-family:var(--font-disp);font-weight:900;font-size:15px;color:var(--wakatake);background:var(--wakatake-soft);border-radius:999px;padding:2px 12px;justify-self:start}
+.axis .v.warn{color:var(--yamabuki);background:var(--yamabuki-soft)}
+.axis ul{margin:0;padding-left:1.2em;display:grid;gap:6px;font-size:15.5px;line-height:1.7}
+
+/* 例題の図 */
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.trio figure{margin:0;display:grid;gap:8px;align-content:start}
+.trio .board{background:#D5E3EA;border-radius:16px;padding:8px;border:1px solid var(--line)}
+.trio svg{display:block;width:100%;height:auto;border-radius:10px}
+.trio figcaption{font-size:15px;font-weight:700;color:var(--ink);line-height:1.6}
+.trio figcaption span{display:block;font-weight:400;color:var(--ink-2);font-size:14.5px}
+
+/* 画面ラフ */
+.phones{display:flex;gap:28px;overflow-x:auto;padding:4px 2px 12px;align-items:flex-start;flex-wrap:wrap}
+.phone-col{flex:none;width:300px;display:grid;gap:12px;align-content:start}
+.phone-col h4{font-size:17px}
+.phone{background:#1E2622;border-radius:38px;padding:10px}
+.phone svg{display:block;width:100%;height:auto;border-radius:29px;background:#F6F1E3}
+.legend{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14.5px;line-height:1.6}
+.legend li{display:grid;grid-template-columns:24px 1fr;gap:8px}
+.legend li i{font-style:normal;width:22px;height:22px;border-radius:50%;background:#E3A21A;color:#1C2520;font-weight:700;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.wf-t{font-family:var(--font-body);fill:#1C2520}
+.wf-d{font-family:var(--font-disp);fill:#1C2520}
+
+.foot{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.refs{margin:0;padding-left:2.2em;display:grid;gap:6px;font-size:14.5px;line-height:1.65;word-break:break-word}
+.refs li::marker{font-variant-numeric:tabular-nums;color:var(--ink-2)}
+@media (prefers-reduced-motion:no-preference){.toc a{transition:background .15s}.toc a:hover{background:var(--surface-2)}}
+@media (max-width:520px){body{font-size:16.5px}.page{padding-inline:16px}.sec{padding-block:44px 4px}.tbl th,.tbl td{padding:9px 11px}}
+</style>
+
+<!-- 図で使う部品 -->
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <symbol id="y-r" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="22" fill="#D9453B" stroke="#2A211B" stroke-width="2.5"/>
+      <path d="M7.5 17c9 4.5 26 4.5 35-1.5M5.5 27c11 5 28 5 39-1.5M10.5 37c8 3.5 21 3.5 29-1" fill="none" stroke="#A42E26" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="c-mike" viewBox="-25 -25 50 50">
+      <path d="M-17 -5L-13 -22L-3 -14Z" fill="#FFFFFF" stroke="#3B2A20" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 -5L13 -22L3 -14Z" fill="#E8963C" stroke="#3B2A20" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="0" cy="3" rx="19.5" ry="17" fill="#FFFFFF" stroke="#3B2A20" stroke-width="2.2"/>
+      <path d="M4 -12.5C12 -13 17.5 -7.5 18.6 -1C13 -2 7 -6 4 -12.5Z" fill="#E8963C"/>
+      <path d="M-18.6 4C-15 1 -10 2 -9 6C-11 10 -16 11 -18 9Z" fill="#2B2522"/>
+      <path d="M-10 2q3.5-4.5 7 0M3 2q3.5-4.5 7 0" fill="none" stroke="#3B2A20" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M-1.8 6h3.6l-1.8 2.2z" fill="#E07A7A"/>
+      <path d="M-4 9.5q2 2.6 4 0q2 2.6 4 0" fill="none" stroke="#3B2A20" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-8 8h-11M-8 10.5l-10 3M8 8h11M8 10.5l10 3" stroke="#3B2A20" stroke-width="1.1" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="c-chatora" viewBox="-25 -25 50 50">
+      <path d="M-17 -5L-13 -22L-3 -14Z" fill="#F0A04B" stroke="#3B2A20" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 -5L13 -22L3 -14Z" fill="#F0A04B" stroke="#3B2A20" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="0" cy="3" rx="19.5" ry="17" fill="#F0A04B" stroke="#3B2A20" stroke-width="2.2"/>
+      <path d="M-4.5 -12.5v5M0 -13.5v6M4.5 -12.5v5" stroke="#B8651F" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="0" cy="9.5" rx="8.5" ry="5.8" fill="#FFF3E2"/>
+      <path d="M-10 2q3.5-4.5 7 0M3 2q3.5-4.5 7 0" fill="none" stroke="#3B2A20" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M-1.8 6h3.6l-1.8 2.2z" fill="#E07A7A"/>
+      <path d="M-4 9.5q2 2.6 4 0q2 2.6 4 0" fill="none" stroke="#3B2A20" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-8 8h-11M-8 10.5l-10 3M8 8h11M8 10.5l10 3" stroke="#3B2A20" stroke-width="1.1" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="c-kuro" viewBox="-25 -25 50 50">
+      <path d="M-17 -5L-13 -22L-3 -14Z" fill="#2E2A2A" stroke="#1A1616" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 -5L13 -22L3 -14Z" fill="#2E2A2A" stroke="#1A1616" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="0" cy="3" rx="19.5" ry="17" fill="#2E2A2A" stroke="#1A1616" stroke-width="2.2"/>
+      <path d="M-10 2q3.5-4.5 7 0M3 2q3.5-4.5 7 0" fill="none" stroke="#F5D34A" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M-1.8 6h3.6l-1.8 2.2z" fill="#E07A7A"/>
+      <path d="M-4 9.5q2 2.6 4 0q2 2.6 4 0" fill="none" stroke="#E8E2D6" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-8 8h-11M-8 10.5l-10 3M8 8h11M8 10.5l10 3" stroke="#E8E2D6" stroke-width="1.1" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="c-hachi" viewBox="-25 -25 50 50">
+      <path d="M-17 -5L-13 -22L-3 -14Z" fill="#2E2A2A" stroke="#1A1616" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 -5L13 -22L3 -14Z" fill="#2E2A2A" stroke="#1A1616" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="0" cy="3" rx="19.5" ry="17" fill="#FFFFFF" stroke="#1A1616" stroke-width="2.2"/>
+      <path d="M-19.3 1C-19 -9 -11 -14 0 -14C11 -14 19 -9 19.3 1C14 -3 6 -2 0 -9C-6 -2 -14 -3 -19.3 1Z" fill="#2E2A2A"/>
+      <path d="M-10 3q3.5-4.5 7 0M3 3q3.5-4.5 7 0" fill="none" stroke="#3B2A20" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M-1.8 6.5h3.6l-1.8 2.2z" fill="#E07A7A"/>
+      <path d="M-4 10q2 2.6 4 0q2 2.6 4 0" fill="none" stroke="#3B2A20" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-8 8.5h-11M-8 11l-10 3M8 8.5h11M8 11l10 3" stroke="#3B2A20" stroke-width="1.1" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="o-box" viewBox="0 0 50 50">
+      <rect x="4" y="6" width="42" height="38" rx="3" fill="#C8945A" stroke="#2A211B" stroke-width="2.5"/>
+      <path d="M4 17h42" stroke="#8E6538" stroke-width="2"/>
+      <rect x="20" y="6" width="10" height="11" fill="#E6C48E" stroke="#8E6538" stroke-width="1"/>
+      <ellipse cx="25" cy="30.5" rx="10" ry="7" fill="#3A2A1E"/>
+      <circle cx="21" cy="30.5" r="2.1" fill="#F5D34A"/><circle cx="29" cy="30.5" r="2.1" fill="#F5D34A"/>
+    </symbol>
+    <symbol id="hanamaru" viewBox="-40 -40 80 80">
+      <g fill="none" stroke="#C73E3A" stroke-width="3.2" stroke-linecap="round">
+        <path d="M-2 0a2.5 2.5 0 1 1 5 0a6 6 0 1 1-12 0a10 10 0 1 1 20 0a14 14 0 1 1-28 0a18 18 0 1 1 36 0"/>
+        <circle cx="0" cy="-27" r="8"/><circle cx="23.4" cy="-13.5" r="8"/><circle cx="23.4" cy="13.5" r="8"/><circle cx="0" cy="27" r="8"/><circle cx="-23.4" cy="13.5" r="8"/><circle cx="-23.4" cy="-13.5" r="8"/>
+      </g>
+    </symbol>
+    <symbol id="kb" viewBox="0 0 60 60">
+      <rect x="2" y="2" width="56" height="56" rx="10" fill="#D9453B" stroke="#7E231D" stroke-width="2.5"/>
+      <path d="M7 11l5 7 5-7M19 11l5 7 5-7M31 11l5 7 5-7M43 11l5 7 5-7M7 23l5 7 5-7M19 23l5 7 5-7M31 23l5 7 5-7M43 23l5 7 5-7M7 35l5 7 5-7M19 35l5 7 5-7M31 35l5 7 5-7M43 35l5 7 5-7M7 47l5 7 5-7M19 47l5 7 5-7M31 47l5 7 5-7M43 47l5 7 5-7" fill="none" stroke="#A42E26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <!-- みかん箱 -->
+    <symbol id="mk" viewBox="0 0 60 60">
+      <circle cx="17" cy="11" r="7" fill="#F29A2E" stroke="#7A4A26" stroke-width="1.5"/><circle cx="30" cy="9" r="7" fill="#F29A2E" stroke="#7A4A26" stroke-width="1.5"/><circle cx="43" cy="11" r="7" fill="#F29A2E" stroke="#7A4A26" stroke-width="1.5"/>
+      <rect x="3" y="12" width="54" height="45" rx="3" fill="#D9A55B" stroke="#7A4A26" stroke-width="2.5"/>
+      <path d="M3 27h54M3 43h54" stroke="#9C6B35" stroke-width="2"/>
+      <rect x="13" y="30" width="34" height="11" rx="2" fill="#FFF3DC" stroke="#9C6B35" stroke-width="1"/>
+      <text x="30" y="39" font-family="BIZ UDPGothic, sans-serif" font-size="9" font-weight="700" fill="#7A4A26" text-anchor="middle">みかん</text>
+    </symbol>
+    <symbol id="pw" viewBox="0 0 20 20">
+      <g fill="#8C5A3C" fill-opacity=".85"><ellipse cx="10" cy="13" rx="4.6" ry="3.9"/><circle cx="4.8" cy="7" r="2.1"/><circle cx="10" cy="4.6" r="2.1"/><circle cx="15.2" cy="7" r="2.1"/></g>
+    </symbol>
+    <!-- お助けアイテム -->
+    <symbol id="it-matatabi" viewBox="0 0 40 40">
+      <path d="M12 14c-5 6-6 14-2 19c4 4 16 4 20 0c4-5 3-13-2-19z" fill="#E9D8A6" stroke="#6B5A2E" stroke-width="2"/>
+      <path d="M12 14c5-3 11-3 16 0" fill="none" stroke="#6B5A2E" stroke-width="2"/>
+      <path d="M14 10l4 4M26 10l-4 4" stroke="#C73E3A" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M20 20c-6 2-7 9-1 12c6-3 6-10 1-12z" fill="#5E9B4F" stroke="#3E6B33" stroke-width="1"/>
+    </symbol>
+    <symbol id="it-mushi" viewBox="0 0 40 40">
+      <circle cx="17" cy="17" r="10" fill="#DDEEF7" stroke="#3B4A55" stroke-width="3"/>
+      <path d="M24.5 24.5l9 9" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/>
+      <path d="M12 15a6 6 0 0 1 5-5" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="it-jarashi" viewBox="0 0 40 40">
+      <path d="M8 36C13 27 19 19 26 12" stroke="#6B8E3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="29" cy="9" rx="5" ry="9" transform="rotate(40 29 9)" fill="#D2DC74" stroke="#6B8E3A" stroke-width="1.5"/>
+      <path d="M24 5l-2-2M29 2v-2M34 5l2-2M35 11l3 0" stroke="#6B8E3A" stroke-width="1.3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="it-kagi" viewBox="0 0 40 40">
+      <path d="M9 34L29 9" stroke="#8D979C" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M29 9c2-4 7-2 4 2l-2 2" fill="none" stroke="#8D979C" stroke-width="3" stroke-linecap="round"/>
+      <path d="M6 27c4-5 9 2 13-3" stroke="#D9453B" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <!-- 例題の町（変わらない部分）。1マス60、6列×4段。上の60は手の数と毛糸玉の置き場 -->
+    <symbol id="st2" viewBox="0 0 360 300">
+      <rect x="0" y="0" width="360" height="60" fill="#EFE6CF"/>
+      <rect x="0" y="60" width="360" height="240" fill="#DCEBF2"/>
+      <g stroke="#C9A66E" stroke-width="1.5">
+        <path d="M6 180V122l30-22 30 22v58z" fill="#F1D9B5"/>
+        <path d="M0 122l36-26 36 26" fill="none" stroke="#B5584A" stroke-width="5" stroke-linejoin="round"/>
+        <rect x="26" y="140" width="20" height="18" rx="2" fill="#FFF8E0"/>
+        <path d="M190 180V128l26-18 26 18v52z" fill="#E9E1F0" stroke="#A99BB8"/>
+        <path d="M186 128l30-21 30 21" fill="none" stroke="#6E6391" stroke-width="5" stroke-linejoin="round"/>
+      </g>
+      <rect x="298" y="132" width="62" height="108" fill="#F7EBD3" stroke="#C9A66E" stroke-width="1.5"/>
+      <rect x="300" y="84" width="58" height="26" rx="4" fill="#FFFFFF" stroke="#2F4F86" stroke-width="2"/>
+      <text x="329" y="102" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="14" font-weight="900" fill="#2F4F86" text-anchor="middle">さかな</text>
+      <path d="M294 112h66v16c-5 5-10 5-15 0c-5 5-11 5-16 0c-5 5-11 5-16 0c-5 5-11 5-16 0z" fill="#2F4F86"/>
+      <path d="M309 112v16M325 112v16M341 112v16" stroke="#FFFFFF" stroke-width="5"/>
+      <rect x="180" y="240" width="60" height="60" fill="#6FA8D6"/>
+      <path d="M186 262q7-6 14 0t14 0t14 0M186 280q7-6 14 0t14 0t14 0" fill="none" stroke="#DDEEF7" stroke-width="2" stroke-linecap="round"/>
+      <text x="210" y="296" font-family="BIZ UDPGothic, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">水路</text>
+      <g fill="#BFAE8E" stroke="#7E6C4E" stroke-width="1.5">
+        <rect x="0" y="240" width="60" height="60"/><rect x="120" y="240" width="60" height="60"/><rect x="240" y="180" width="60" height="60"/><rect x="240" y="240" width="60" height="60"/><rect x="300" y="240" width="60" height="60"/>
+      </g>
+      <path d="M0 260h60M0 280h60M30 240v20M15 260v20M45 260v20M30 280v20M120 260h60M120 280h60M150 240v20M135 260v20M165 260v20M240 200h60M240 220h60M270 180v20M255 200v20M285 200v20M240 260h120M240 280h120M270 240v20M330 240v20M255 260v20M285 260v20M315 260v20M345 260v20" stroke="#9C8B6C" stroke-width="1"/>
+      <rect x="40" y="252" width="12" height="20" rx="3" fill="#8A5A33" stroke="#3B2A20" stroke-width="1.5"/>
+      <path d="M306 238c6-16 38-16 46 0z" fill="#8FB3C9" stroke="#2F4F86" stroke-width="2"/>
+      <path d="M314 222c8-8 22-8 28 0c-6 7-20 7-28 0zM342 222l8-6v12z" fill="#7FA6C4" stroke="#2F4F86" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <!-- 例題の「はじめ」 -->
+    <symbol id="sb2" viewBox="0 0 360 300">
+      <use href="#st2" width="360" height="300"/>
+      <use href="#kb" x="60" y="240" width="60" height="60"/>
+      <use href="#kb" x="60" y="180" width="60" height="60"/>
+      <use href="#kb" x="120" y="180" width="60" height="60"/>
+      <use href="#kb" x="180" y="180" width="60" height="60"/>
+      <use href="#mk" x="120" y="120" width="60" height="60"/>
+      <use href="#mk" x="120" y="60" width="60" height="60"/>
+      <path d="M46 262L90 270L90 210L150 210L210 210C262 210 312 150 330 46" fill="none" stroke="#FFF3E6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46 262L90 270L90 210L150 210L210 210C262 210 312 150 330 46" fill="none" stroke="#7E231D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g font-family="BIZ UDPGothic, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+        <circle cx="72" cy="252" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="257" fill="#7E231D">1</text>
+        <circle cx="72" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="197" fill="#7E231D">2</text>
+        <circle cx="132" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="132" y="197" fill="#7E231D">3</text>
+        <circle cx="192" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="192" y="197" fill="#7E231D">4</text>
+      </g>
+      <use href="#y-r" x="308" y="6" width="44" height="44"/>
+      <text x="298" y="36" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#1C2520" text-anchor="end">毛糸 1</text>
+      <text x="14" y="38" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="22" font-weight="900" fill="#1C2520">あと 4手</text>
+      <ellipse cx="30" cy="232" rx="18" ry="8" fill="#FFFFFF" stroke="#3B2A20" stroke-width="2"/>
+      <path d="M46 232q13-4 9-20" fill="none" stroke="#3B2A20" stroke-width="3" stroke-linecap="round"/>
+      <path d="M14 224c2-9 16-9 18 0z" fill="#B98A57" stroke="#6B4A2A" stroke-width="1.5"/>
+      <use href="#c-chatora" x="6" y="178" width="48" height="48"/>
+      <use href="#pw" x="64" y="160" width="14" height="14"/><use href="#pw" x="86" y="164" width="14" height="14"/>
+      <circle cx="104" cy="108" r="14" fill="#F6E2DF" stroke="#9B3434" stroke-width="2"/>
+      <text x="104" y="114" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#9B3434" text-anchor="middle">！</text>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="page">
+
+<header class="cover">
+  <p class="eyebrow">ゲーム企画書　第5版（テーマ・ゲーム性・収益を見直し）　2026年9月27日</p>
+  <div class="title-row">
+    <svg viewBox="0 0 120 60" aria-hidden="true"><use href="#kb" x="0" y="6" width="50" height="50"/><use href="#c-chatora" x="56" y="0" width="60" height="60"/></svg>
+    <h1 class="title">こねこのおつかい<span class="kari">仮題</span></h1>
+  </div>
+  <p class="catch">ほどいて、編み直して、おつかいの道をつくる。</p>
+  <p class="lead">家も道も橋も毛糸で編まれた「あみあみ町」。はじめてのおつかいに出た子猫が、お店までたどり着けるように、町の編み物をほどいて編み直すパズルです。毛糸は最後に編んだ所から順にしかほどけず、編めるのは糸はしのとなりだけ。子猫が待てる手の数の中で道をつくります。詰まったときは、広告の動画を見るか購入すると手に入るお助けアイテムで先へ進めます。クリアするたびに、本物の子猫の写真・動画がアルバムに集まります。</p>
+  <dl class="spec">
+    <div><dt>ジャンル</dt><dd>編み直しパズル（ステージ制・基本無料）</dd></div>
+    <div><dt>主な対象</dt><dd>60代〜80代。孫の世代もいっしょに</dd></div>
+    <div><dt>遊ぶ機器と長さ</dt><dd>スマートフォン（縦画面）、タブレット。1面1〜3分</dd></div>
+    <div><dt>操作と失敗</dt><dd>押して選び、ボタンで決める。時間制限なし。手の数を使い切るとゲームオーバー</dd></div>
+    <div><dt>ごほうび</dt><dd>クリアごとに子猫の写真・動画。こねこアルバムに集まる</dd></div>
+    <div><dt>収益</dt><dd>お助けアイテム（広告の動画を見てもらう・円で買う）。無理に見せる広告なし</dd></div>
+  </dl>
+  <nav aria-label="目次">
+    <ol class="toc">
+      <li><a href="#s1"><span>1</span>ここが新しい</a></li>
+      <li><a href="#s2"><span>2</span>テーマと見た目の面白さ</a></li>
+      <li><a href="#s3"><span>3</span>遊び方と例題</a></li>
+      <li><a href="#s4"><span>4</span>ゲームオーバーと難しさ</a></li>
+      <li><a href="#s5"><span>5</span>お助けアイテムと収益</a></li>
+      <li><a href="#s6"><span>6</span>評価と煮詰め</a></li>
+      <li><a href="#s7"><span>7</span>こねこアルバム</a></li>
+      <li><a href="#s8"><span>8</span>画面ラフ</a></li>
+      <li><a href="#s9"><span>9</span>ステージ構成と面の作り方</a></li>
+      <li><a href="#s10"><span>10</span>調べてわかったこと</a></li>
+      <li><a href="#s11"><span>11</span>年配の人向けの決まり</a></li>
+      <li><a href="#s12"><span>12</span>確かめ方と作り方</a></li>
+      <li><a href="#s13"><span>13</span>ほかの候補と見送った案</a></li>
+      <li><a href="#s14"><span>14</span>出典</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- 1 -->
+<section class="sec" id="s1">
+  <div class="sec-head"><span class="sec-no">1</span><h2>ここが新しい</h2></div>
+  <p class="say">編み物だけが持つ性質を、そのままルールにしたパズル。<small>編み物は、最後に編んだ目からしかほどけません。糸を切らずに編み足せるのも、いま糸がある所（糸はし）からだけです。編み物をしたことのある人なら誰でも知っているこの2つの性質が、このゲームの決まりのすべてです。</small></p>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th></th><th>いまの糸・毛糸のパズル</th><th class="ours">こねこのおつかい</th></tr></thead>
+      <tbody>
+        <tr><td>することは</td><td>糸を色ごとに仕分ける。からまりをほどく。毛糸の絵を色ごとに消していく</td><td class="ours">町の編み物をほどいて、子猫の通り道を編み直す</td></tr>
+        <tr><td>決まりのもと</td><td>色合わせ・並べ替え（どの題材でも成り立つ）</td><td class="ours">最後に編んだ所からしかほどけない。編めるのは糸はしのとなりだけ（編み物でしか成り立たない）</td></tr>
+        <tr><td>ほどいた糸は</td><td>消えて終わり</td><td class="ours">次に編む材料になる。町そのものが材料</td></tr>
+        <tr><td>失敗すると</td><td>ライフが減る。待ち時間や広告で続行</td><td class="ours">子猫が待ちくたびれてゲームオーバー。ライフも待ち時間もなく、すぐやり直せる。惜しいときは、お助けで続けられる</td></tr>
+        <tr><td>広告と課金</td><td>面の合間に広告が割りこむ。進むのに課金が要る</td><td class="ours">広告は自分で「見る」を押したときだけ。どの面もアイテムなしで解ける</td></tr>
+        <tr><td>ねこ</td><td>飾り</td><td class="ours">主役。くせがそのまま決まりになり、クリアのたびに本物の子猫の写真・動画が集まる</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">2026年9月の検索では、毛糸・糸のパズルは多く見つかりましたが、どれも色で仕分ける型、からまりをほどく型、毛糸の絵を色ごとに消していく型でした<sup class="ref"><a href="#r33">33</a></sup><sup class="ref"><a href="#r34">34</a></sup><sup class="ref"><a href="#r35">35</a></sup><sup class="ref"><a href="#r36">36</a></sup>。編み物がほどける順番を決まりにしたパズルは、調べた範囲では見当たりませんでした。</p>
+</section>
+
+<!-- 2 -->
+<section class="sec" id="s2">
+  <div class="sec-head"><span class="sec-no">2</span><h2>テーマと見た目の面白さ</h2></div>
+  <p class="say">毛糸でできた「あみあみ町」で、子猫がはじめてのおつかい。<small>遊ぶ人は町のあみもの名人。八百屋さん、魚屋さん、豆腐屋さん…と、子猫が1章ごとに1軒のお店へおつかいに行き、道の途中の困りごとを、町の編み物をほどいて編み直して解決します。子猫に頼られる役なので、年配の人が「世話を焼く側」で遊べます。</small></p>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>場面</th><th>見た目の面白さ</th></tr></thead>
+      <tbody>
+        <tr><td>選んだとき</td><td>半透明の子猫が、その道を「ためし歩き」して見せる。失敗する道なら、水路にぽちゃんと落ちてみせる。予告そのものが小さな見せ物になる</td></tr>
+        <tr><td>ほどくとき</td><td>毛糸がしゅるしゅるほどけて毛糸玉に巻かれる。子猫は動く糸の先にじゃれて前足を出す</td></tr>
+        <tr><td>崩れるとき</td><td>みかん箱が崩れて、みかんがころころ転がる。子猫はびっくりして飛び上がる</td></tr>
+        <tr><td>待っている間</td><td>手を使うたびに子猫があくび。残り1手になると、うとうと舟をこぐ</td></tr>
+        <tr><td>ゲームオーバー</td><td>子猫がおつかいのかごを枕に、丸くなって寝てしまう</td></tr>
+        <tr><td>クリア</td><td>お店に着くと、自分より大きなお魚や大根を、よろよろ運んでいく</td></tr>
+        <tr><td>お助けを使ったとき</td><td>またたびで子猫がごろごろ転がって元気になる。ねこじゃらしで大ジャンプ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">動きは点滅させず、ゆっくり見せます。演出を控えめにする設定も用意します（11章）。</p>
+</section>
+
+<!-- 3 -->
+<section class="sec" id="s3">
+  <div class="sec-head"><span class="sec-no">3</span><h2>遊び方と例題</h2></div>
+  <ol class="flow">
+    <li><b>押して選ぶ</b><span>編んだ所を押すと、糸はしからそこまでがほどける予告が出る。半透明の子猫が、その後の道をためし歩きして見せる。</span></li>
+    <li><b>ボタンで決める</b><span>大きな「ほどく（1手）」を押すと、一気にほどけて毛糸玉にくるくる巻かれる。ほかの所を押せば取り消し。</span></li>
+    <li><b>となりに編む</b><span>糸はしのとなりに点線の枠が出る（多くても3つ）。選んで「編む（1手）」を押すと、毛糸1つ分を編む。</span></li>
+    <li><b>子猫が歩く</b><span>手の数を使い切る前に、足あとがお店まで届けばクリア。子猫の写真や動画がもらえる。</span></li>
+  </ol>
+
+  <div class="sub">
+    <h3>子猫のくせ（そのまま決まりになる）</h3>
+    <div class="tbl keycol">
+      <table>
+        <thead><tr><th>くせ</th><th>ゲームでは</th><th>出る章</th></tr></thead>
+        <tbody>
+          <tr><td>段差は1段までならのぼる</td><td>2段以上の壁の前では止まる</td><td class="nw">1章から</td></tr>
+          <tr><td>高い所から落ちても平気</td><td>道がなくなっても、下に着地して歩き続ける。ただし水路に落ちるとおつかい失敗</td><td class="nw">1章から</td></tr>
+          <tr><td>ぬれるのがきらい</td><td>水たまりの手前で止まる</td><td class="nw">4章から</td></tr>
+          <tr><td>箱があると入ってしまう</td><td>通り道に段ボール箱があると、中で丸くなって動かない</td><td class="nw">5章から</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">ほかに、みかん箱は支えがなくなると落ちて崩れます。お店の前に落ちると道がふさがり、ゲームオーバーです。</p>
+  </div>
+
+  <div class="sub">
+    <h3>例題　2章「魚屋さんへ」より（手の数は4、最短は3手）</h3>
+    <div class="trio">
+      <figure>
+        <div class="board">
+          <svg viewBox="0 0 360 300" role="img" aria-label="はじめ。杭から毛糸が1・2・3・4と伸び、糸はしは4。3の上にみかん箱が2段。子猫は2の上にのぼったところで箱に止められる。4の下は水路">
+            <use href="#sb2" width="360" height="300"/>
+            <rect x="178" y="178" width="64" height="64" rx="12" fill="none" stroke="#F2B420" stroke-width="4"/>
+          </svg>
+        </div>
+        <figcaption>① はじめ<span>数字は編んだ順（最初の章だけ出す）。糸はしは4。みかん箱が2段あって、子猫はのぼれない。</span></figcaption>
+      </figure>
+      <figure>
+        <div class="board">
+          <svg viewBox="0 0 360 300" role="img" aria-label="3を押してほどいた直後。3と4がほどけ、みかん箱は落ちて崩れ、みかんが転がった。糸はしは2になり、となりに点線の枠が2つ。このままだと、子猫は水路に落ちる">
+            <use href="#st2" width="360" height="300"/>
+            <use href="#kb" x="60" y="240" width="60" height="60"/>
+            <use href="#kb" x="60" y="180" width="60" height="60"/>
+            <g fill="#FFFFFF" fill-opacity=".55" stroke="#D9453B" stroke-width="3" stroke-dasharray="7 5"><rect x="63" y="123" width="54" height="54" rx="10"/><rect x="123" y="183" width="54" height="54" rx="10"/></g>
+            <g fill="#D9A55B" stroke="#7A4A26" stroke-width="1.5" stroke-linejoin="round"><path d="M126 239l8-12 9 6-4 6z"/><path d="M146 239l5-13 11 4-3 9z"/></g>
+            <g fill="#F29A2E" stroke="#7A4A26" stroke-width="1.5"><circle cx="170" cy="232" r="6"/><circle cx="160" cy="176" r="6"/><circle cx="206" cy="174" r="6"/></g>
+            <text x="150" y="104" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="17" font-weight="900" fill="#7A4A26" text-anchor="middle">ころころ</text>
+            <path d="M46 262L90 270L90 210C150 170 300 150 330 46" fill="none" stroke="#FFF3E6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M46 262L90 270L90 210C150 170 300 150 330 46" fill="none" stroke="#7E231D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <g font-family="BIZ UDPGothic, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+              <circle cx="72" cy="252" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="257" fill="#7E231D">1</text>
+              <circle cx="72" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="197" fill="#7E231D">2</text>
+            </g>
+            <use href="#y-r" x="308" y="6" width="44" height="44"/>
+            <text x="298" y="36" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#1C2520" text-anchor="end">毛糸 3</text>
+            <text x="14" y="38" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="22" font-weight="900" fill="#1C2520">あと 3手</text>
+            <ellipse cx="30" cy="232" rx="18" ry="8" fill="#FFFFFF" stroke="#3B2A20" stroke-width="2"/>
+            <path d="M46 232q13-4 9-20" fill="none" stroke="#3B2A20" stroke-width="3" stroke-linecap="round"/>
+            <path d="M14 224c2-9 16-9 18 0z" fill="#B98A57" stroke="#6B4A2A" stroke-width="1.5"/>
+            <use href="#c-chatora" x="6" y="178" width="48" height="48"/>
+            <g opacity=".45"><use href="#c-chatora" x="190" y="232" width="40" height="40"/></g>
+            <path d="M188 248q-8-10-2-18M232 248q8-10 2-18M200 244q-4-8 0-14M220 244q4-8 0-14" fill="none" stroke="#DDEEF7" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="264" y="236" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="15" font-weight="900" fill="#2F6DB5" text-anchor="middle">ぽちゃん</text>
+          </svg>
+        </div>
+        <figcaption>② 3を押して「ほどく」（1手目）<span>3と4が一気にほどけ、みかん箱が崩れてみかんが転がる。糸はしは2に戻った。半透明の子猫が「このままだと水路にぽちゃん」と見せる。</span></figcaption>
+      </figure>
+      <figure>
+        <div class="board">
+          <svg viewBox="0 0 360 300" role="img" aria-label="2マス編み直したあと。糸はし2のとなりに2マス編んで、水路の上に道ができた。子猫は魚屋さんに着いた。3手でクリアなのではなまる">
+            <use href="#st2" width="360" height="300"/>
+            <use href="#kb" x="60" y="240" width="60" height="60"/>
+            <use href="#kb" x="60" y="180" width="60" height="60"/>
+            <use href="#kb" x="120" y="180" width="60" height="60"/>
+            <use href="#kb" x="180" y="180" width="60" height="60"/>
+            <path d="M46 262L90 270L90 210L150 210L210 210C262 210 312 150 330 46" fill="none" stroke="#FFF3E6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M46 262L90 270L90 210L150 210L210 210C262 210 312 150 330 46" fill="none" stroke="#7E231D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <g font-family="BIZ UDPGothic, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+              <circle cx="72" cy="252" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="257" fill="#7E231D">1</text>
+              <circle cx="72" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="72" y="197" fill="#7E231D">2</text>
+              <circle cx="132" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="132" y="197" fill="#7E231D">新</text>
+              <circle cx="192" cy="192" r="11" fill="#FFFFFF" stroke="#7E231D" stroke-width="1.5"/><text x="192" y="197" fill="#7E231D">新</text>
+            </g>
+            <use href="#y-r" x="308" y="6" width="44" height="44"/>
+            <text x="298" y="36" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#1C2520" text-anchor="end">毛糸 1</text>
+            <text x="14" y="38" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="22" font-weight="900" fill="#1C2520">あと 1手</text>
+            <circle cx="200" cy="30" r="24" fill="#FFFFFF"/><use href="#hanamaru" x="176" y="6" width="48" height="48"/>
+            <use href="#pw" x="70" y="160" width="14" height="14"/><use href="#pw" x="112" y="164" width="14" height="14"/><use href="#pw" x="150" y="160" width="14" height="14"/><use href="#pw" x="190" y="164" width="14" height="14"/><use href="#pw" x="232" y="160" width="14" height="14"/><use href="#pw" x="266" y="164" width="14" height="14"/>
+            <ellipse cx="322" cy="226" rx="16" ry="7" fill="#FFFFFF" stroke="#3B2A20" stroke-width="2"/>
+            <use href="#c-chatora" x="296" y="178" width="46" height="46"/>
+          </svg>
+        </div>
+        <figcaption>③ となりに2マス編む（2手目・3手目）<span>水路の上に道ができ、足あとが魚屋さんまで届いてクリア。最短の3手なので、はなまる。</span></figcaption>
+      </figure>
+    </div>
+    <div class="tbl keycol">
+      <table>
+        <thead><tr><th>最初に押す所</th><th>その後</th><th>結果</th></tr></thead>
+        <tbody>
+          <tr><td>3（みかん箱の下）</td><td>2マス編み直す</td><td class="good">3手でクリア。はなまる</td></tr>
+          <tr><td>2</td><td>糸はしが1になり、上へ回りこんで3マス編む</td><td>4手でクリア（はなまるなし）</td></tr>
+          <tr><td>1（全部ほどく）</td><td>杭から編み直しになる。杭の右に1マス、右どなりは石だたみでふさがっているので上へ回りこんで3マス</td><td class="bad">5手かかり、手が足りずにゲームオーバー</td></tr>
+          <tr><td>4だけ</td><td>みかん箱が残り、子猫はのぼれない</td><td class="bad">手が足りずにゲームオーバー</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">この面はシミュレータで総当たりして、最短3手、全部ほどくと5手になることを確かめてあります。1手先の予告だけを見て進める初心者ボットは1回目で47%、でたらめに押すボットは1%しか解けません（6章）。</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="sec" id="s4">
+  <div class="sec-head"><span class="sec-no">4</span><h2>ゲームオーバーと難しさ</h2></div>
+  <p class="say">時間制限はなし。子猫が待てるのは「手の数」だけ。<small>考えている間は、どれだけ時間をかけても手の数は減りません。ゲームオーバーになるのは、手を使い切ったときと、お店までの道が二度とできなくなったときだけです。</small></p>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>起きたこと</th><th>どうなるか</th></tr></thead>
+      <tbody>
+        <tr><td>手の数を使い切っても、足あとがお店に届いていない</td><td>子猫がかごを枕に寝てしまい、ゲームオーバー。あと少しなら、お助け（またたびで＋3手）で続けられる</td></tr>
+        <tr><td>お店までの道が二度とできなくなった（みかん箱が道をふさいだ、子猫が水路に落ちた など）</td><td>その場でゲームオーバー。崩れる様子は最後まで見せる</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="list">
+    <li>ゲームオーバーでも失うものはない。ライフも待ち時間もなく、「最初からもう一度」を1回押せばすぐ始まる。</li>
+    <li>「1手もどす」は置かない。押して選んでから大きなボタンで決めるので、押しまちがいで手を失うことがない。</li>
+    <li>あと1手で届いていたときは「おしい！あと1手でした」と伝える。</li>
+    <li>ゲームオーバーの回数は誰にも見せない。ランキングや記録には出さない。</li>
+  </ul>
+  <div class="sub">
+    <h3>難しさの段階</h3>
+    <div class="tbl keycol">
+      <table>
+        <thead><tr><th>面</th><th>子猫が待てる手の数</th><th>置き場所</th></tr></thead>
+        <tbody>
+          <tr><td>やさしい面（章の最初、新しい仕掛けが出た面）</td><td>最短の手数＋2</td><td>本道</td></tr>
+          <tr><td>ふつうの面</td><td>最短の手数＋1</td><td>本道</td></tr>
+          <tr><td>「むずかしい」面（5面に1つ）</td><td>最短の手数ぴったり</td><td>寄り道。飛ばしても本道は進める</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="sec" id="s5">
+  <div class="sec-head"><span class="sec-no">5</span><h2>お助けアイテムと収益</h2></div>
+  <p class="say">詰まったら、お助けアイテム。広告は自分で「見る」を押したときだけ。<small>アイテムは、毎日のおみやげ・はなまる・章のごほうびでもらえるほか、広告の動画を見てもらうか、円で買えます。どの面もアイテムなしで解けるように作り、アイテムは「早く・楽に」進むためのものにします。</small></p>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>アイテム</th><th>効き目</th><th>初心者ボットの成功（なし43%）</th><th>手に入れ方</th></tr></thead>
+      <tbody>
+        <tr><td><span class="ic"><svg viewBox="0 0 40 40"><use href="#it-jarashi" width="40" height="40"/></svg><b>ねこじゃらし</b></span></td><td>その面だけ、子猫が2段までとべる</td><td class="num">52%</td><td>毎日のおみやげ・動画・購入</td></tr>
+        <tr><td><span class="ic"><svg viewBox="0 0 40 40"><use href="#it-mushi" width="40" height="40"/></svg><b>虫めがね</b></span></td><td>次の一手が光る（詰まったときに）</td><td class="num">61%</td><td>毎日のおみやげ・動画・購入</td></tr>
+        <tr><td><span class="ic"><svg viewBox="0 0 40 40"><use href="#it-matatabi" width="40" height="40"/></svg><b>またたび</b></span></td><td>子猫が待てる手が3つ増える。ゲームオーバーの場面でも使える</td><td class="num">67%</td><td>はなまる・動画・購入</td></tr>
+        <tr><td><span class="ic"><svg viewBox="0 0 40 40"><use href="#it-kagi" width="40" height="40"/></svg><b>かぎ針</b></span></td><td>糸はしのとなりでなくても、好きな所に1マス編める</td><td class="num">79%</td><td>章のごほうび・購入のみ（強いので動画では配らない）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">成功は、ふるいにかけた「ふつうの面」60面で、初心者ボットがアイテムを1つ持って1回目に解けた割合（各200回）。好きな1マスを切る「はさみ」も試しましたが、48%とほとんど効かなかったので外しました。</p>
+
+  <div class="sub">
+    <h3>いちばんの見せ場は「おしい！」の場面</h3>
+    <ul class="list">
+      <li>初心者ボットのゲームオーバーのうち21%は「あと1手」。ゲームオーバーの場面で「動画を見て、またたび（＋3手）」を出すと、続けて解けるのは44%（最善の手なら91%）。</li>
+      <li>でたらめに押しても、またたびがあれば解けるわけではない（12%）。アイテムを使っても、考える遊びのまま。</li>
+      <li>「むずかしい」面は寄り道なので、アイテムを使いたくなるのは挑戦したい人だけ。本道で無理に使わせない。</li>
+    </ul>
+  </div>
+
+  <div class="sub">
+    <h3>値段の例（仮）</h3>
+    <div class="tbl keycol">
+      <table>
+        <thead><tr><th>品物</th><th>値段（仮）</th></tr></thead>
+        <tbody>
+          <tr><td>またたび・虫めがね・ねこじゃらし　各3こ</td><td class="num">各120円</td></tr>
+          <tr><td>かぎ針　1こ</td><td class="num">120円</td></tr>
+          <tr><td>おたすけ詰め合わせ（4種を5こずつ）</td><td class="num">490円</td></tr>
+          <tr><td>動画でもらえる回数</td><td class="num">1日5回まで</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>年配の人が困らないための決まり</h3>
+    <div class="tbl wide keycol">
+      <table>
+        <thead><tr><th>項目</th><th>決まり</th><th>根拠</th></tr></thead>
+        <tbody>
+          <tr><td class="nw">広告</td><td>自分で「動画を見る」を押したときだけ。押すと先に「広告の動画が流れます（30秒ほど）。見ますか？」と確かめる。面の合間に割りこむ広告・バナー広告はなし</td><td>「広告を見ないと進めない」で楽しさが下がる59%、広告の量56%<sup class="ref"><a href="#r1">1</a></sup></td></tr>
+          <tr><td class="nw">押しまちがい</td><td>動画のボタンは、遊ぶボタンから離して置く。広告の中から意図しない契約に進みにくい広告の出し方を選ぶ</td><td>広告の誤タップで意図しない契約になる例<sup class="ref"><a href="#r27">27</a></sup></td></tr>
+          <tr><td class="nw">進み方</td><td>どの面もアイテムなしで解ける。「むずかしい」面は寄り道。お金で買えるねこはいない</td><td>「進行に課金が必要」で楽しさが下がる58%<sup class="ref"><a href="#r1">1</a></sup></td></tr>
+          <tr><td class="nw">買い方</td><td>円でそのまま値段を出す。くじ引き・仮想のお金・定期購入はなし。買う前に金額を大きく出して確かめる</td><td>WCAG 3.3.4<sup class="ref"><a href="#r17">17</a></sup>。国民生活センターの相談例<sup class="ref"><a href="#r27">27</a></sup></td></tr>
+          <tr><td class="nw">使いすぎ</td><td>月の上限額を決められる。家族が設定・変更できる。家族が代わりに買って贈ることもできる</td><td>スマホの契約や利用で人の助けを借りたシニア51.4%<sup class="ref"><a href="#r38">38</a></sup></td></tr>
+          <tr><td class="nw">お知らせ</td><td>「買いませんか」の通知は出さない</td><td>購入の通知で楽しさが下がる54%<sup class="ref"><a href="#r1">1</a></sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">「動画を見てもらう」は、50〜79歳の56.7%が行っているポイ活に近い、なじみのある行動です<sup class="ref"><a href="#r37">37</a></sup>。一方で、70歳以上でアプリ内課金をした人は8%と少ない<sup class="ref"><a href="#r1">1</a></sup>ので、収益の中心は動画、購入は「もっと楽に進めたい人」と「家族からの贈り物」と考えます。</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="sec" id="s6">
+  <div class="sec-head"><span class="sec-no">6</span><h2>評価と煮詰め</h2></div>
+  <p class="say">4つの物差しで評価し、決まりを測りながら煮詰めました。<small>「お年寄りでもできる」「楽しい」「どんどん次をやりたい」「見た目で面白い」。子猫の歩き・みかん箱の重さ・手の数まで、この企画書の決まりどおりに動く計算機を作り、面を自動で数百面作って、3種類のボットに遊ばせて測りました。</small></p>
+
+  <div class="sub">
+    <h3>測り方</h3>
+    <div class="tbl wide keycol">
+      <table>
+        <thead><tr><th>ボット</th><th>遊び方</th><th>何を確かめるか</th></tr></thead>
+        <tbody>
+          <tr><td>初心者ボット</td><td>押す前の予告を見て、子猫の足あとがいちばん先まで伸びる手を選ぶ。1手先しか読まない</td><td>お年寄りが予告を頼りに遊んだときの目安</td></tr>
+          <tr><td>でたらめボット</td><td>何も考えずに押す</td><td>これで解けるなら、パズルになっていない</td></tr>
+          <tr><td>全部ほどくボット</td><td>まず全部ほどき、あとは最善の手で編み直す</td><td>これで解けるなら、いちばんの決まり（最後に編んだ所から）が効いていない</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>決まりをどう変えたか</h3>
+    <p class="prose">第3版では「点線の枠ならどこにでも編める」としていました。自動で作った面を比べると、第3版はほとんどパズルになっていませんでした。第4版から「編めるのは糸はしのとなりだけ」に変えています。糸を切らずに編み足すという、編み物の自然な性質です。</p>
+    <div class="tbl wide keycol">
+      <table>
+        <thead><tr><th>指標（自動で作った各150面、手の数は最短＋1）</th><th>第3版の決まり</th><th>いまの決まり</th></tr></thead>
+        <tbody>
+          <tr><td>全部ほどくボットで解けてしまう面</td><td class="bad num">97%</td><td class="num">74%（ふるいにかけた面では0%）</td></tr>
+          <tr><td>最短3手以上の面（考える手ごたえ）</td><td class="bad num">23%</td><td class="good num">48%</td></tr>
+          <tr><td>良問の条件をすべて満たす面（ふつう／むずかしい）</td><td class="bad num">1%／5%</td><td class="good num">11%／33%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">良問の条件：全部ほどくボットでは解けない、でたらめボットの成功が2割以下、みかん箱が崩れるか3マス以上まとめてほどける見せ場がある、初心者ボットの成功が段階ごとの帯に入る。目標を1つにすると抜け道のある面が通ってしまうため、条件を重ねています。</p>
+  </div>
+
+  <div class="sub">
+    <h3>4つの物差しの結果（ふるいにかけた面）</h3>
+    <div class="axis">
+      <div>
+        <h4>お年寄りでもできる</h4><span class="v">3回以内に8割超</span>
+        <ul>
+          <li>ふつうの面で、初心者ボットの成功は1回目46%。ヒントで69%、手を1つ足して84%。</li>
+          <li>アイテムを1つ使えば1回目から52〜79%。</li>
+          <li>押しまちがいは起きない（選んでから決める）。落ちる物と足あとは決める前に見える。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>楽しい</h4><span class="v">ひらめきが要る</span>
+        <ul>
+          <li>全部ほどくボットでは解けない面だけを出す。でたらめボットの成功は5%。</li>
+          <li>みかん箱が崩れる面が68%。1回で平均3.6マスがまとめてほどける。</li>
+          <li>最短ならはなまる、ぎりぎりでも合格、雑だとゲームオーバー、と結果が段階になる。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>どんどん次をやりたい</h4><span class="v">短く、毎回ごほうび</span>
+        <ul>
+          <li>最短は平均2.4手。1面は1〜3分で終わる。</li>
+          <li>失敗の21%が「あと1手」。その場のまたたびで44%が続けて解ける。</li>
+          <li>クリアのたびに子猫が1匹。次の子猫の影と、おつかいの残りの道のりを見せる。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>見た目で面白い</h4><span class="v warn">試遊で確かめる</span>
+        <ul>
+          <li>予告の「ためし歩き」、ぽちゃん、ころころ、あくび、寝てしまう、よろよろ運ぶ、と操作のたびに子猫の反応がある（2章）。</li>
+          <li>ボットでは測れないので、試遊で笑った回数・声が出た回数を数える。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">ふつうの面は余裕1手、むずかしい面は余裕0手で測りました（ふるいにかけた28〜98面、各150〜200回）。手の数の余裕を広げると、全部ほどくボットで解ける面が増えます（余裕0で45%、余裕1で76%、余裕2で90%）。余裕は、難しさを決めるいちばん強いつまみです。</p>
+  </div>
+
+  <div class="sub">
+    <h3>まだ数字で言えないこと</h3>
+    <ul class="list">
+      <li>ボットはお年寄りの代わりの目安にすぎない。実際のお年寄りの試遊で、1回目の成功率、ゲームオーバーのあとにもう一度押す割合、動画を見る割合を確かめる。</li>
+      <li>子猫の写真・動画と見た目の反応が、「次をやりたい」をどれだけ押し上げるかは試遊で測る。</li>
+      <li>毛糸が2本・子猫が2匹の章（3章・6章）は、まだ測っていない。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="sec" id="s7">
+  <div class="sec-head"><span class="sec-no">7</span><h2>こねこアルバム（クリアのごほうび）</h2></div>
+  <p class="say">クリアするたびに、町の子猫が1匹アルバムに入る。<small>おつかいの道で出会った子猫として、本物の子猫の写真や短い動画がもらえます。アルバムに集まった子猫は、家族にも送れます。</small></p>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>いつ</th><th>もらえるもの</th></tr></thead>
+      <tbody>
+        <tr><td>面をクリアした</td><td>町の子猫の写真か短い動画（かわいい系）</td></tr>
+        <tr><td>「むずかしい」面をクリアした</td><td>おもしろい猫の動画（箱に入りきらない、変な寝相、器に液体のように収まる など）</td></tr>
+        <tr><td>最短の手数でクリアした（はなまる）</td><td>同じ子の、おまけの1枚と、またたび1こ</td></tr>
+        <tr><td>おつかいが終わった（章の最後）</td><td>特別な1本（長めの動画）と、かぎ針1こ。アルバムの1ページが完成する</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="list">
+    <li>くじ引きにしない。どの面で誰がもらえるかは決まっていて、アルバムには「？」の枠と面の番号が見えている。同じ子が二度出ることはない。</li>
+    <li>クリア画面に、次の面の子猫の影とひとこと（例：「つぎは、箱が大好きな子」）を出す。</li>
+    <li>お金で買える子猫はいない。子猫は遊んだ分だけ増える。</li>
+  </ul>
+
+  <div class="phones">
+    <div class="phone-col">
+      <h4>クリアの画面</h4>
+      <div class="phone">
+        <svg viewBox="0 0 390 844" role="img" aria-label="クリアの画面。2章ステージ3クリアとはなまる。大きな枠に茶トラの子猫むぎの動画。名前とひとこと、アルバムに入りました・またたび1この札、次の子猫の影。つぎのステージへ、もう一度見る、家族に送るのボタン">
+          <rect width="390" height="844" fill="#F6F1E3"/>
+          <text x="24" y="90" class="wf-d" font-size="25" font-weight="900">2章-3　クリア</text>
+          <circle cx="336" cy="80" r="34" fill="#FFFFFF"/>
+          <use href="#hanamaru" x="300" y="44" width="72" height="72"/>
+          <rect x="20" y="124" width="350" height="300" rx="18" fill="#2B2522"/>
+          <rect x="32" y="136" width="326" height="276" rx="12" fill="#F7E3B5"/>
+          <ellipse cx="195" cy="372" rx="118" ry="28" fill="#34558C" stroke="#1E335A" stroke-width="3"/>
+          <ellipse cx="195" cy="352" rx="62" ry="26" fill="#F0A04B" stroke="#3B2A20" stroke-width="3"/>
+          <use href="#c-chatora" x="115" y="176" width="160" height="160"/>
+          <rect x="44" y="380" width="200" height="28" rx="14" fill="#2B2522" fill-opacity=".78"/>
+          <text x="144" y="399" font-family="BIZ UDPGothic, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">ここに本物の子猫の動画</text>
+          <circle cx="330" cy="390" r="20" fill="#FFFFFF" fill-opacity=".92" stroke="#2B2522" stroke-width="2"/>
+          <rect x="323" y="383" width="14" height="14" rx="2" fill="#2B2522"/>
+          <text x="195" y="466" class="wf-d" font-size="25" font-weight="900" text-anchor="middle">むぎ（生後2か月）</text>
+          <text x="195" y="498" class="wf-t" font-size="17" text-anchor="middle">お魚のにおいで、どこでも走ってくる。</text>
+          <rect x="52" y="514" width="286" height="36" rx="18" fill="#DCEEE3" stroke="#2C7550" stroke-width="2"/>
+          <text x="195" y="538" font-family="BIZ UDPGothic, sans-serif" font-size="15" font-weight="700" fill="#2C7550" text-anchor="middle">アルバムに入りました・またたび1こ</text>
+          <rect x="24" y="562" width="342" height="66" rx="14" fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5"/>
+          <path d="M44 612c0-14 6-24 14-28l-2-14 9 8c4-1 8-1 12 0l9-8-2 14c8 4 14 14 14 28z" fill="#45524A"/>
+          <text x="118" y="589" class="wf-t" font-size="16" font-weight="700">つぎは、箱が大好きな子</text>
+          <text x="118" y="613" class="wf-t" font-size="14">魚屋さんまで、あと2つの通り</text>
+          <rect x="24" y="642" width="342" height="72" rx="16" fill="#274A7D"/>
+          <text x="195" y="687" font-family="BIZ UDPGothic, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" text-anchor="middle">つぎのステージへ</text>
+          <g font-family="BIZ UDPGothic, sans-serif" font-size="19" font-weight="700" text-anchor="middle">
+            <rect x="24" y="730" width="164" height="64" rx="14" fill="#FFFFFF" stroke="#274A7D" stroke-width="2.5"/><text x="106" y="769" fill="#274A7D">もう一度見る</text>
+            <rect x="202" y="730" width="164" height="64" rx="14" fill="#FFFFFF" stroke="#274A7D" stroke-width="2.5"/><text x="284" y="769" fill="#274A7D">家族に送る</text>
+          </g>
+          <g font-family="BIZ UDPGothic, sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+            <circle cx="26" cy="130" r="14" fill="#E3A21A"/><text x="26" y="135" fill="#1C2520">1</text>
+            <circle cx="362" cy="366" r="14" fill="#E3A21A"/><text x="362" y="371" fill="#1C2520">2</text>
+            <circle cx="40" cy="518" r="14" fill="#E3A21A"/><text x="40" y="523" fill="#1C2520">3</text>
+            <circle cx="364" cy="566" r="14" fill="#E3A21A"/><text x="364" y="571" fill="#1C2520">4</text>
+            <circle cx="366" cy="734" r="14" fill="#E3A21A"/><text x="366" y="739" fill="#1C2520">5</text>
+          </g>
+        </svg>
+      </div>
+      <ol class="legend">
+        <li><i>1</i><span>もらった写真・動画は大きく出す。押すと画面いっぱいになる。</span></li>
+        <li><i>2</i><span>動画は1回流れて止まる。押すともう一度。設定で「動きを止める」と写真になる。</span></li>
+        <li><i>3</i><span>はなまるなら、おまけの1枚とまたたび1こ。</span></li>
+        <li><i>4</i><span>次の子猫の影と、お店までの残りの道のり。「どんな子だろう」「あと少し」が次を遊ぶ理由になる。</span></li>
+        <li><i>5</i><span>気に入ったら、家族のLINEに送れる。</span></li>
+      </ol>
+    </div>
+
+    <div class="phone-col">
+      <h4>こねこアルバム</h4>
+      <div class="phone">
+        <svg viewBox="0 0 390 844" role="img" aria-label="こねこアルバムの画面。1章八百屋さんへで7匹集まっている。子猫の写真の枠が7つ、はなまるの印、おもしろの印、まだの枠は？。下に特別な1本まであと13面の枠と、つづきを遊ぶボタン">
+          <rect width="390" height="844" fill="#F6F1E3"/>
+          <rect x="12" y="44" width="116" height="54" rx="12" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/>
+          <text x="70" y="78" class="wf-t" font-size="19" font-weight="700" text-anchor="middle">◀ もどる</text>
+          <text x="374" y="80" class="wf-d" font-size="23" font-weight="900" text-anchor="end">こねこアルバム</text>
+          <rect x="12" y="112" width="64" height="64" rx="14" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/><text x="44" y="152" class="wf-t" font-size="22" font-weight="700" text-anchor="middle">◀</text>
+          <rect x="314" y="112" width="64" height="64" rx="14" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/><text x="346" y="152" class="wf-t" font-size="22" font-weight="700" text-anchor="middle">▶</text>
+          <text x="195" y="141" class="wf-d" font-size="21" font-weight="900" text-anchor="middle">1章　八百屋さんへ</text>
+          <text x="195" y="167" class="wf-t" font-size="15" text-anchor="middle">7 ／ 20ひき</text>
+          <g fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5">
+            <rect x="20" y="190" width="110" height="122" rx="12"/><rect x="140" y="190" width="110" height="122" rx="12"/><rect x="260" y="190" width="110" height="122" rx="12"/>
+            <rect x="20" y="322" width="110" height="122" rx="12"/><rect x="140" y="322" width="110" height="122" rx="12"/><rect x="260" y="322" width="110" height="122" rx="12"/>
+            <rect x="20" y="454" width="110" height="122" rx="12"/>
+          </g>
+          <g fill="#EDEAE0" stroke="#9A9A90" stroke-width="1.5" stroke-dasharray="5 4">
+            <rect x="140" y="454" width="110" height="122" rx="12"/><rect x="260" y="454" width="110" height="122" rx="12"/>
+          </g>
+          <use href="#c-chatora" x="40" y="206" width="70" height="70"/>
+          <use href="#c-kuro" x="160" y="206" width="70" height="70"/>
+          <use href="#c-mike" x="280" y="206" width="70" height="70"/>
+          <use href="#c-hachi" x="40" y="338" width="70" height="70"/>
+          <use href="#o-box" x="165" y="354" width="60" height="60"/>
+          <use href="#c-mike" x="280" y="338" width="70" height="70"/>
+          <use href="#c-chatora" x="40" y="470" width="70" height="70"/>
+          <g font-family="BIZ UDPGothic, sans-serif" font-size="15" font-weight="700" fill="#1C2520" text-anchor="middle">
+            <text x="75" y="298">こはく</text><text x="195" y="298">すみ</text><text x="315" y="298">たま</text>
+            <text x="75" y="430">おはぎ</text><text x="195" y="432">ちくわ</text><text x="315" y="430">きなこ</text>
+            <text x="75" y="562">あずき</text>
+          </g>
+          <g font-family="BIZ UDPGothic, sans-serif" font-size="12" font-weight="700" fill="#6E6E66">
+            <text x="30" y="208">1</text><text x="150" y="208">2</text><text x="270" y="208">3</text>
+            <text x="30" y="340">4</text><text x="150" y="340">5</text><text x="270" y="340">6</text>
+            <text x="30" y="472">7</text>
+          </g>
+          <rect x="186" y="328" width="58" height="22" rx="11" fill="#F6E2DF" stroke="#9B3434" stroke-width="1.5"/>
+          <text x="215" y="343" font-family="BIZ UDPGothic, sans-serif" font-size="11.5" font-weight="700" fill="#9B3434" text-anchor="middle">おもしろ</text>
+          <circle cx="236" cy="196" r="16" fill="#FFFFFF"/><use href="#hanamaru" x="220" y="180" width="32" height="32"/>
+          <circle cx="356" cy="196" r="16" fill="#FFFFFF"/><use href="#hanamaru" x="340" y="180" width="32" height="32"/>
+          <circle cx="356" cy="328" r="16" fill="#FFFFFF"/><use href="#hanamaru" x="340" y="312" width="32" height="32"/>
+          <g font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-weight="900" text-anchor="middle" fill="#8A8A80">
+            <text x="195" y="530" font-size="44">？</text><text x="315" y="530" font-size="44">？</text>
+          </g>
+          <g font-family="BIZ UDPGothic, sans-serif" font-size="13" fill="#6E6E66" text-anchor="middle">
+            <text x="195" y="562">ステージ 8</text><text x="315" y="562">ステージ 9</text>
+          </g>
+          <rect x="20" y="590" width="350" height="72" rx="14" fill="#FBEFD1" stroke="#C98A0C" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="195" y="620" class="wf-t" font-size="18" font-weight="700" text-anchor="middle">特別な1本まで　あと13面</text>
+          <text x="195" y="646" class="wf-t" font-size="15" text-anchor="middle">八百屋さんに着くともらえる</text>
+          <text x="195" y="690" font-family="BIZ UDPGothic, sans-serif" font-size="14" fill="#6E6E66" text-anchor="middle">▼ 10〜20 は下に続く</text>
+          <rect x="24" y="752" width="342" height="72" rx="16" fill="#274A7D"/>
+          <text x="195" y="797" font-family="BIZ UDPGothic, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" text-anchor="middle">つづきを遊ぶ</text>
+          <g font-family="BIZ UDPGothic, sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+            <circle cx="26" cy="116" r="14" fill="#E3A21A"/><text x="26" y="121" fill="#1C2520">1</text>
+            <circle cx="254" cy="456" r="14" fill="#E3A21A"/><text x="254" y="461" fill="#1C2520">2</text>
+            <circle cx="136" cy="318" r="14" fill="#E3A21A"/><text x="136" y="323" fill="#1C2520">3</text>
+            <circle cx="372" cy="226" r="14" fill="#E3A21A"/><text x="372" y="231" fill="#1C2520">4</text>
+            <circle cx="26" cy="594" r="14" fill="#E3A21A"/><text x="26" y="599" fill="#1C2520">5</text>
+          </g>
+        </svg>
+      </div>
+      <ol class="legend">
+        <li><i>1</i><span>章の切り替えは左右のボタン。指でなぞる操作はない。</span></li>
+        <li><i>2</i><span>まだの枠は「？」と面の番号だけ見える。何が入るかはお楽しみ。</span></li>
+        <li><i>3</i><span>「むずかしい」面のごほうびは、おもしろい猫の動画。</span></li>
+        <li><i>4</i><span>はなまるの印。おまけの1枚がついている。</span></li>
+        <li><i>5</i><span>特別な1本まであと何面かを、いつも見せる。</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>写真・動画の集め方と権利</h3>
+    <ul class="list">
+      <li>保護猫の団体や猫カフェと組んで、撮影させてもらうか提供してもらう。名前と団体名を載せ、里親が決まった子には「おうちが決まりました」の印をつける。</li>
+      <li>使用許諾を取った写真・動画を買う。自分たちで撮る。</li>
+      <li>インターネット上の猫のGIFや動画を、許可なく使わない。AIで作った猫の画像を、本物の猫として見せない。</li>
+      <li>おもしろ猫は、猫がこわがる・痛がる・危ない場面は使わない。寝相、箱、あくびなど、自然なおかしさだけにする。</li>
+      <li>家族に送れるのは、送ってよいと許可をもらった素材だけにする。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="sec" id="s8">
+  <div class="sec-head"><span class="sec-no">8</span><h2>画面ラフ</h2></div>
+  <div class="phones">
+    <!-- 遊ぶ画面 -->
+    <div class="phone-col">
+      <h4>遊ぶ画面（3を選んだところ）</h4>
+      <div class="phone">
+        <svg viewBox="0 0 390 844" role="img" aria-label="遊ぶ画面。上に決まりの札、中央に例題の町。3を選んだところで、3と4が光り、みかん箱が落ちる予告と、半透明の子猫が水路に落ちるためし歩きが出ている。下に大きな「ほどく（1手）」ボタン、お助けアイテムの棚、やりなおしとあそびかたのボタン">
+          <rect width="390" height="844" fill="#F6F1E3"/>
+          <rect x="12" y="44" width="116" height="54" rx="12" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/>
+          <text x="70" y="78" class="wf-t" font-size="19" font-weight="700" text-anchor="middle">◀ 地図</text>
+          <text x="374" y="80" class="wf-d" font-size="23" font-weight="900" text-anchor="end">2章-3</text>
+          <rect x="12" y="108" width="366" height="46" rx="12" fill="#FFFFFF" stroke="#C98A0C" stroke-width="2"/>
+          <text x="195" y="138" class="wf-t" font-size="17" font-weight="700" text-anchor="middle">ほどけるのは、最後に編んだ所から</text>
+          <use href="#sb2" x="15" y="162" width="360" height="300"/>
+          <g fill="none" stroke="#F2B420" stroke-width="4"><rect x="133" y="340" width="64" height="64" rx="12"/><rect x="193" y="340" width="64" height="64" rx="12"/></g>
+          <circle cx="165" cy="372" r="17" fill="#FFFFFF" fill-opacity=".6" stroke="#274A7D" stroke-width="3"/>
+          <path d="M225 236v70" stroke="#9B3434" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M214 296l11 13 11-13" fill="none" stroke="#9B3434" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="264" y="266" font-family="BIZ UDPGothic, sans-serif" font-size="14" font-weight="700" fill="#9B3434" text-anchor="middle">落ちる</text>
+          <g opacity=".45"><use href="#c-chatora" x="205" y="410" width="40" height="40"/></g>
+          <text x="226" y="404" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="14" font-weight="900" fill="#2F6DB5" text-anchor="middle">ぽちゃん</text>
+          <rect x="12" y="470" width="366" height="42" rx="12" fill="#FFFFFF" stroke="#C98A0C" stroke-width="2"/>
+          <text x="195" y="497" class="wf-t" font-size="15.5" font-weight="700" text-anchor="middle">3と4がほどけ、みかん箱が落ちます</text>
+          <rect x="24" y="520" width="342" height="64" rx="16" fill="#274A7D"/>
+          <text x="195" y="561" font-family="BIZ UDPGothic, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" text-anchor="middle">ほどく（1手）</text>
+          <text x="20" y="614" class="wf-t" font-size="14" font-weight="700">お助け</text>
+          <g>
+            <rect x="20" y="622" width="82" height="86" rx="12" fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5"/><use href="#it-matatabi" x="41" y="628" width="40" height="40"/><text x="61" y="688" font-family="BIZ UDPGothic, sans-serif" font-size="12.5" font-weight="700" fill="#1C2520" text-anchor="middle">またたび</text><text x="61" y="703" font-family="BIZ UDPGothic, sans-serif" font-size="12" fill="#45524A" text-anchor="middle">のこり2</text>
+            <rect x="112" y="622" width="82" height="86" rx="12" fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5"/><use href="#it-mushi" x="133" y="628" width="40" height="40"/><text x="153" y="688" font-family="BIZ UDPGothic, sans-serif" font-size="12.5" font-weight="700" fill="#1C2520" text-anchor="middle">虫めがね</text><text x="153" y="703" font-family="BIZ UDPGothic, sans-serif" font-size="12" fill="#45524A" text-anchor="middle">のこり1</text>
+            <rect x="204" y="622" width="82" height="86" rx="12" fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5"/><use href="#it-jarashi" x="225" y="628" width="40" height="40"/><text x="245" y="688" font-family="BIZ UDPGothic, sans-serif" font-size="12" font-weight="700" fill="#1C2520" text-anchor="middle">ねこじゃらし</text><text x="245" y="703" font-family="BIZ UDPGothic, sans-serif" font-size="12" fill="#45524A" text-anchor="middle">のこり1</text>
+            <rect x="296" y="622" width="82" height="86" rx="12" fill="#FFFFFF" stroke="#CBD1C1" stroke-width="1.5"/><use href="#it-kagi" x="317" y="628" width="40" height="40"/><text x="337" y="688" font-family="BIZ UDPGothic, sans-serif" font-size="12.5" font-weight="700" fill="#1C2520" text-anchor="middle">かぎ針</text><text x="337" y="703" font-family="BIZ UDPGothic, sans-serif" font-size="12" fill="#45524A" text-anchor="middle">お店へ</text>
+          </g>
+          <g font-family="BIZ UDPGothic, sans-serif" font-weight="700" font-size="20" text-anchor="middle">
+            <rect x="12" y="724" width="178" height="68" rx="14" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/><text x="101" y="765" fill="#1C2520">やりなおし</text>
+            <rect x="200" y="724" width="178" height="68" rx="14" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/><text x="289" y="765" fill="#1C2520">あそびかた</text>
+          </g>
+          <g font-family="BIZ UDPGothic, sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+            <circle cx="24" cy="112" r="14" fill="#E3A21A"/><text x="24" y="117" fill="#1C2520">1</text>
+            <circle cx="140" cy="186" r="14" fill="#E3A21A"/><text x="140" y="191" fill="#1C2520">2</text>
+            <circle cx="262" cy="340" r="14" fill="#E3A21A"/><text x="262" y="345" fill="#1C2520">3</text>
+            <circle cx="186" cy="424" r="14" fill="#E3A21A"/><text x="186" y="429" fill="#1C2520">4</text>
+            <circle cx="30" cy="524" r="14" fill="#E3A21A"/><text x="30" y="529" fill="#1C2520">5</text>
+            <circle cx="72" cy="610" r="14" fill="#E3A21A"/><text x="72" y="615" fill="#1C2520">6</text>
+            <circle cx="24" cy="726" r="14" fill="#E3A21A"/><text x="24" y="731" fill="#1C2520">7</text>
+          </g>
+        </svg>
+      </div>
+      <ol class="legend">
+        <li><i>1</i><span>いちばん大事な決まりは、いつも画面に出しておく。</span></li>
+        <li><i>2</i><span>子猫が待てる残りの手の数。考えている間は減らない。</span></li>
+        <li><i>3</i><span>押して選ぶと、糸はしからそこまでのほどける範囲が光る。落ちる物には矢印。</span></li>
+        <li><i>4</i><span>半透明の子猫がためし歩きして、その後どうなるかを見せる。</span></li>
+        <li><i>5</i><span>大きなボタンで決める。選んだだけでは何も起きない。</span></li>
+        <li><i>6</i><span>お助けアイテムの棚。数が0なら、動画でもらうかお店で買う案内に変わる。</span></li>
+        <li><i>7</i><span>「やりなおし」は無料で、すぐ始まる。</span></li>
+      </ol>
+    </div>
+
+    <!-- ゲームオーバー -->
+    <div class="phone-col">
+      <h4>ゲームオーバー（あと1手だったとき）</h4>
+      <div class="phone">
+        <svg viewBox="0 0 390 844" role="img" aria-label="ゲームオーバーの画面。おしい、あと1手でした。子猫がかごを枕に寝ている。またたびであと3手のお助けとして、動画を見てもらう（無料）と、またたびを使う（のこり2）のボタン。その下に最初からもう一度と地図にもどるのボタン">
+          <rect width="390" height="844" fill="#F6F1E3"/>
+          <text x="195" y="96" class="wf-d" font-size="34" font-weight="900" text-anchor="middle">おしい！</text>
+          <text x="195" y="132" class="wf-t" font-size="18" text-anchor="middle">あと1手で、魚屋さんに届きました</text>
+          <rect x="20" y="152" width="350" height="250" rx="18" fill="#EFE6CF"/>
+          <path d="M96 362c6-22 54-26 66 0z" fill="#B98A57" stroke="#6B4A2A" stroke-width="2"/>
+          <ellipse cx="208" cy="332" rx="92" ry="44" fill="#F0A04B" stroke="#3B2A20" stroke-width="3"/>
+          <path d="M292 330c26 4 32 30 6 34" fill="none" stroke="#3B2A20" stroke-width="5" stroke-linecap="round"/>
+          <use href="#c-chatora" x="100" y="232" width="110" height="110"/>
+          <text x="262" y="232" font-family="Zen Maru Gothic, BIZ UDPGothic, sans-serif" font-size="30" font-weight="900" fill="#45524A">Zzz</text>
+          <rect x="12" y="420" width="366" height="170" rx="16" fill="#FFFFFF" stroke="#C98A0C" stroke-width="2.5"/>
+          <use href="#it-matatabi" x="28" y="432" width="40" height="40"/>
+          <text x="76" y="460" class="wf-t" font-size="19" font-weight="700">またたびで、あと3手</text>
+          <rect x="24" y="486" width="164" height="72" rx="14" fill="#FBEFD1" stroke="#A86F00" stroke-width="2"/>
+          <text x="106" y="516" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#1C2520" text-anchor="middle">動画を見て</text>
+          <text x="106" y="542" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#1C2520" text-anchor="middle">もらう（無料）</text>
+          <rect x="202" y="486" width="164" height="72" rx="14" fill="#FFFFFF" stroke="#274A7D" stroke-width="2.5"/>
+          <text x="284" y="516" font-family="BIZ UDPGothic, sans-serif" font-size="17" font-weight="700" fill="#274A7D" text-anchor="middle">またたびを使う</text>
+          <text x="284" y="542" font-family="BIZ UDPGothic, sans-serif" font-size="15" fill="#274A7D" text-anchor="middle">（のこり2）</text>
+          <text x="195" y="580" class="wf-t" font-size="13" text-anchor="middle" fill="#45524A">動画は広告です（30秒ほど）。見なくても遊べます</text>
+          <rect x="24" y="620" width="342" height="72" rx="16" fill="#274A7D"/>
+          <text x="195" y="665" font-family="BIZ UDPGothic, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" text-anchor="middle">最初からもう一度</text>
+          <rect x="24" y="712" width="342" height="64" rx="14" fill="#FFFFFF" stroke="#45524A" stroke-width="2"/>
+          <text x="195" y="752" font-family="BIZ UDPGothic, sans-serif" font-size="20" font-weight="700" fill="#1C2520" text-anchor="middle">地図にもどる</text>
+          <g font-family="BIZ UDPGothic, sans-serif" font-weight="700" font-size="15" text-anchor="middle">
+            <circle cx="96" cy="72" r="14" fill="#E3A21A"/><text x="96" y="77" fill="#1C2520">1</text>
+            <circle cx="36" cy="160" r="14" fill="#E3A21A"/><text x="36" y="165" fill="#1C2520">2</text>
+            <circle cx="30" cy="490" r="14" fill="#E3A21A"/><text x="30" y="495" fill="#1C2520">3</text>
+            <circle cx="360" cy="490" r="14" fill="#E3A21A"/><text x="360" y="495" fill="#1C2520">4</text>
+            <circle cx="30" cy="624" r="14" fill="#E3A21A"/><text x="30" y="629" fill="#1C2520">5</text>
+          </g>
+        </svg>
+      </div>
+      <ol class="legend">
+        <li><i>1</i><span>あと1手だったときは「おしい！」と伝える（失敗の21%）。</span></li>
+        <li><i>2</i><span>子猫はかごを枕に寝ている。責める言葉は出さない。</span></li>
+        <li><i>3</i><span>動画のボタンには「広告」と書く。押すと、流れる前にもう一度確かめる。</span></li>
+        <li><i>4</i><span>持っているまたたびは、そのまま使える。</span></li>
+        <li><i>5</i><span>いちばん大きいのは「最初からもう一度」。お金も広告もなしで、すぐ始まる。</span></li>
+      </ol>
+    </div>
+  </div>
+  <p class="note">幅390の縦画面を基準に描いたラフです。町は6列（1マス約10mm）までにしています。</p>
+</section>
+
+<!-- 9 -->
+<section class="sec" id="s9">
+  <div class="sec-head"><span class="sec-no">9</span><h2>ステージ構成と面の作り方</h2></div>
+  <p class="prose">1章20ステージ、全6章（120ステージ）で最初に出します。1章が1軒のお店へのおつかいで、章ごとに新しい仕掛けを1つだけ足します。5面に1つ「むずかしい」面を寄り道として置きます。</p>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>章</th><th>おつかい先と季節</th><th>新しく出る仕掛け</th><th>おつかいする子猫（例）</th><th>章の特別な1本（例）</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">1章</td><td>八百屋さん（春の商店街）</td><td>ほどく・糸はしのとなりに編む・手の数・水路</td><td>三毛「たま」</td><td>子猫たちのお昼寝</td></tr>
+        <tr><td class="nw">2章</td><td>魚屋さん（初夏）</td><td>みかん箱（落ちると崩れる）</td><td>茶トラ「むぎ」</td><td>ごはんの時間</td></tr>
+        <tr><td class="nw">3章</td><td>豆腐屋さん（梅雨）</td><td>毛糸が2本（糸はしが2つ。どちらからほどくか）</td><td>黒「すみ」</td><td>箱の中の3匹</td></tr>
+        <tr><td class="nw">4章</td><td>駄菓子屋さん（夏祭り）</td><td>水たまり（ぬれるのがきらい）</td><td>ハチワレ「おはぎ」</td><td>ねこじゃらしの大ジャンプ</td></tr>
+        <tr><td class="nw">5章</td><td>神社の縁日（秋）</td><td>段ボール箱（入ってしまう）</td><td>茶トラ「こむぎ」</td><td>落ち葉の山に飛びこむ</td></tr>
+        <tr><td class="nw">6章</td><td>パン屋さん（雪の日）</td><td>子猫が2匹（きょうだいでおつかい）</td><td>白「もち」</td><td>こたつから出てこない</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub">
+    <h3>面は、自動で作ってふるいにかける</h3>
+    <ol class="steps">
+      <li>決まりどおりに動く計算機で、町・毛糸・みかん箱を自動で並べた面を大量に作る。</li>
+      <li>総当たりで最短の手数を求め、最短2〜5手の面だけを残す。</li>
+      <li>3種類のボットに遊ばせ、良問の条件で選ぶ（6章）。</li>
+      <li>残った面から、人が見て題材（お店・季節・子猫のくせ）に合うものを並べ、章の中で波をつける。</li>
+    </ol>
+    <p class="note">いまの試作では、無作為に作った面のうち、ふつうの面の条件を満たすのが7%、むずかしい面の条件を満たすのが25%でした。1章20面なら、数百面作れば足ります。やさしい面（章の最初）だけは、全部ほどいて解けてもよいとしています。</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="sec" id="s10">
+  <div class="sec-head"><span class="sec-no">10</span><h2>調べてわかったこと</h2></div>
+  <div class="stats">
+    <div class="stat"><b class="num">95<small>%</small></b><span>60代のスマホ保有率。70代86%、80代前半69%</span><cite>モバイル社会研究所 2026<sup class="ref"><a href="#r3">3</a></sup></cite></div>
+    <div class="stat"><b class="num">73<small>%</small></b><span>50歳以上のゲーマーが遊ぶ「パズル・論理」</span><cite>AARP 2023<sup class="ref"><a href="#r1">1</a></sup></cite></div>
+    <div class="stat"><b class="num">74<small>%</small></b><span>遊ぶ理由に「挑戦」。楽しい86%、くつろぐ79%</span><cite>AARP 2023<sup class="ref"><a href="#r1">1</a></sup></cite></div>
+    <div class="stat"><b class="num">77<small>%</small></b><span>「多くのゲームは複雑すぎる」と答えた60代・70歳以上</span><cite>AARP 2023<sup class="ref"><a href="#r1">1</a></sup></cite></div>
+    <div class="stat"><b class="num">59<small>%</small></b><span>「広告を見ないと進めない」で楽しさが下がる。進行に課金が必要なのは58%</span><cite>AARP 2023<sup class="ref"><a href="#r1">1</a></sup></cite></div>
+    <div class="stat"><b class="num">56.7<small>%</small></b><span>ポイ活をしている50〜79歳</span><cite>第一生命経済研究所<sup class="ref"><a href="#r37">37</a></sup></cite></div>
+  </div>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>わかったこと</th><th>企画でどうするか</th></tr></thead>
+      <tbody>
+        <tr class="mine"><td>制作者の見立て：見た目の気持ちよさと面白さ、難しさとゲームオーバー、ねこ、ぱっとわかることが好まれる。時間制限はやめる。お助けアイテムを広告と課金で</td><td>すべてを「ほどく・編む」の2つの操作から生まれるようにする。ゲームオーバーは手の数だけで決め、惜しい場面でお助けを出す</td></tr>
+        <tr><td>糸・毛糸のパズルはいま多いが、色で仕分ける型・からまりをほどく型ばかり<sup class="ref"><a href="#r33">33</a></sup><sup class="ref"><a href="#r34">34</a></sup></td><td>流行りの題材を使いつつ、仕組みは編み物の性質から作って差をつける</td></tr>
+        <tr><td>遊ぶ理由の74%が「挑戦」<sup class="ref"><a href="#r1">1</a></sup>。年配のゲーマーで最も多い動機も挑戦<sup class="ref"><a href="#r13">13</a></sup></td><td>ゲームオーバーと「むずかしい」面で、手ごたえを残す</td></tr>
+        <tr><td>時間制限や速さが壁<sup class="ref"><a href="#r10">10</a></sup>。時間制限のない作りと、難しさを選べることが好まれる<sup class="ref"><a href="#r12">12</a></sup></td><td>時間制限なし。詰まったらお助けアイテムで先へ</td></tr>
+        <tr><td>難しい面は最大の離脱理由<sup class="ref"><a href="#r8">8</a></sup>。ライフ制と重なると不満になる<sup class="ref"><a href="#r9">9</a></sup></td><td>ライフなし。「むずかしい」面は寄り道にして本道をふさがない</td></tr>
+        <tr><td>年配層の人気作はステージ制が多い（米国の45歳以上で1位 Candy Crush、2位 Wordscapes<sup class="ref"><a href="#r5">5</a></sup>）。日本では50代以上の割合がポコポコ48.1%<sup class="ref"><a href="#r6">6</a></sup></td><td>ステージ制。1面1〜3分</td></tr>
+        <tr><td>「複雑すぎる」77%、70歳以上の46%が「チュートリアルが足りない」<sup class="ref"><a href="#r1">1</a></sup></td><td>操作は2つだけ。結果を決める前に、ためし歩きで見せる</td></tr>
+        <tr><td>楽しさを下げるのは、進むのに広告や課金が要ること<sup class="ref"><a href="#r1">1</a></sup>。一方で「見てもらう」ポイ活は50〜79歳の56.7%が行っている<sup class="ref"><a href="#r37">37</a></sup></td><td>広告は自分で見たいときだけ、見るとアイテムがもらえる形にする。進むのに広告も課金も要らない</td></tr>
+        <tr><td>脳トレで認知症を防げる確かな証拠はない<sup class="ref"><a href="#r28">28</a></sup><sup class="ref"><a href="#r29">29</a></sup>。根拠のない効能の宣伝には処分や罰則がある<sup class="ref"><a href="#r30">30</a></sup><sup class="ref"><a href="#r31">31</a></sup></td><td>「脳トレ」「認知症予防」とはうたわない</td></tr>
+        <tr><td>一緒に遊ぶ相手の1位は子・孫。ただしプレイ時間の81%は一人<sup class="ref"><a href="#r1">1</a></sup></td><td>一人で完結させ、もらった子猫の写真・動画を家族に送れるようにする</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="sec" id="s11">
+  <div class="sec-head"><span class="sec-no">11</span><h2>年配の人向けの決まり</h2></div>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>項目</th><th>決まり</th><th>根拠</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">押す所</td><td>町は6列まで（1マス約10mm）。主なボタンは14mm以上</td><td>タップの正確さは14mm未満で下がる<sup class="ref"><a href="#r15">15</a></sup>。誤り率は約7.8mmで6.5%、約4.7mmで39%<sup class="ref"><a href="#r14">14</a></sup></td></tr>
+        <tr><td class="nw">操作</td><td>押して選ぶ→予告を見る→大きなボタンで決める。指でなぞる・長押し・2本指は使わない</td><td>WCAG 2.5.1・2.5.2・2.5.7<sup class="ref"><a href="#r17">17</a></sup>。高齢者はドラッグが最も遅い<sup class="ref"><a href="#r16">16</a></sup></td></tr>
+        <tr><td class="nw">押しまちがい</td><td>選んだだけでは何も起きない。決めるボタンは選んだ所から離れた画面の下に出す。続けて2回押しても1回として扱う</td><td>ゆっくりしたタップが長押しと判定される<sup class="ref"><a href="#r14">14</a></sup></td></tr>
+        <tr><td class="nw">時間</td><td>時間制限なし。考えている間に手の数は減らない。決まりはいつも表示</td><td>WCAG 2.2.1<sup class="ref"><a href="#r17">17</a></sup>。時間制限が壁<sup class="ref"><a href="#r10">10</a></sup>。作業記憶は年齢とともに落ちる<sup class="ref"><a href="#r23">23</a></sup></td></tr>
+        <tr><td class="nw">文字</td><td>BIZ UDゴシック。本文は17pt相当以上で、OSの文字拡大に合わせる</td><td>Apple HIG<sup class="ref"><a href="#r22">22</a></sup>。「画面が小さく見えづらい」32.2%<sup class="ref"><a href="#r25">25</a></sup></td></tr>
+        <tr><td class="nw">色</td><td>文字のコントラストは7:1を目標（最低4.5:1）。毛糸が2本以上の章では、色に加えて模様でも見分ける</td><td>WCAG 1.4.1・1.4.3・1.4.6<sup class="ref"><a href="#r17">17</a></sup>。水晶体の黄変で青・紫が見えにくい<sup class="ref"><a href="#r18">18</a></sup></td></tr>
+        <tr><td class="nw">演出</td><td>点滅なし。動きはゆっくり。演出を控えめにする設定を用意する</td><td>WCAG 2.3.1<sup class="ref"><a href="#r17">17</a></sup>。特殊効果を切りたいという要望<sup class="ref"><a href="#r2">2</a></sup></td></tr>
+        <tr><td class="nw">動く写真</td><td>子猫の動画は1回流れて止まり、押すともう一度流れる。「動きを止める」設定で写真にできる。音は最初は消しておく</td><td>WCAG 2.2.2・2.3.1<sup class="ref"><a href="#r17">17</a></sup></td></tr>
+        <tr><td class="nw">音</td><td>効果音は基本周波数2.5kHz以下の複合音。BGM・効果音・声を別々に調整でき、声には字幕</td><td>JIS S 0013<sup class="ref"><a href="#r19">19</a></sup>。Game Accessibility Guidelines<sup class="ref"><a href="#r21">21</a></sup></td></tr>
+        <tr><td class="nw">失敗</td><td>ゲームオーバーはあるが罰はない。すぐ無料でやり直せる。ライフなし。失敗の回数は人に見せない</td><td>65歳以上の90%がつまずきを自分のせいにする<sup class="ref"><a href="#r24">24</a></sup>。失敗を人に見られるのを嫌う<sup class="ref"><a href="#r10">10</a></sup></td></tr>
+        <tr><td class="nw">覚え方</td><td>実際の町で1手ずつ覚える。「あそびかた」はいつも同じ場所</td><td>新しい機器に手ほどきが必要な人77%<sup class="ref"><a href="#r32">32</a></sup>。WCAG 3.2.6<sup class="ref"><a href="#r17">17</a></sup></td></tr>
+        <tr><td class="nw">保存・登録</td><td>1手ごとに自動保存。登録・パスワードなし</td><td>すき間時間に使いたいという声<sup class="ref"><a href="#r14">14</a></sup>。「パスワードの管理が大変」32.4%<sup class="ref"><a href="#r26">26</a></sup></td></tr>
+        <tr><td class="nw">広告・購入</td><td>5章「年配の人が困らないための決まり」のとおり</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="sec" id="s12">
+  <div class="sec-head"><span class="sec-no">12</span><h2>確かめ方と作り方</h2></div>
+  <div class="sub">
+    <h3>確かめ方</h3>
+    <ul class="list">
+      <li>1章（20面）のWeb試作を、60〜80代の5〜8人と孫の世代2〜3人に遊んでもらう。</li>
+      <li>見ること：「最後に編んだ所から」「糸はしのとなりに編む」を説明なしでつかめるか。ためし歩きや崩れる場面で笑うか・声が出るか。ゲームオーバーのあと、もう一度押すか・動画を見るか・やめてしまうか。新しい子猫が入ったときの反応。</li>
+      <li>ボットの値（ふつうの面で1回目46%・3回以内84%）と人の値を比べ、ずれが大きければボットの遊び方か面のふるい方を直す。</li>
+      <li>広告の押しまちがいや「思っていたのと違う」声がないかを、試遊のあとに必ず聞く。</li>
+    </ul>
+    <div class="tbl keycol">
+      <table>
+        <thead><tr><th>手触りの目安（仮）</th><th>目安</th></tr></thead>
+        <tbody>
+          <tr><td>最初の3面を説明なしで解ける人</td><td class="num">9割以上</td></tr>
+          <tr><td>ゲームオーバーのあと、もう一度遊ぶ人（お助けを使った人を含む）</td><td class="num">8割以上</td></tr>
+          <tr><td>ふつうの面を3回以内に解ける人</td><td class="num">8割以上。「むずかしい」面は5割以上</td></tr>
+          <tr><td>1回に遊ぶ時間</td><td class="num">10分前後</td></tr>
+          <tr><td>翌日も開いた人</td><td class="num">半分以上</td></tr>
+          <tr><td>広告の押しまちがい・購入の思い違いの訴え</td><td class="num">0件</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="sub">
+    <h3>作り方</h3>
+    <ul class="list">
+      <li>いつもの標準構成（Vite＋TypeScript＋PixiJS＋React）。町と糸と子猫の動きは PixiJS、文字とボタンは HTML/CSS に置き、OSの文字拡大に合わせる。</li>
+      <li>決まり（ほどく・編む・重さ・子猫の歩き・手の数・アイテム）はゲームの画面と切り離して作り、同じものを総当たりの道具・ボット・面の自動生成で使う。この企画書の数字も、同じ作りの試作の計算機で出している。</li>
+      <li>ためし歩きは、決まりの計算で出した子猫の道筋を、半透明の子猫でなぞって見せる（見た目だけの動きを別に作らない）。</li>
+      <li>子猫の写真・動画は章ごとにまとめて取り込み、端末に保存して電波がなくても見られるようにする。中身はGIFより軽い動画形式（MP4・WebM）にする。</li>
+      <li>予定（ざっと）：1〜2週目は決まり・総当たりの道具・面の自動生成。3〜4週目に1章20面、アルバム、お助けアイテム（まずは動画なしで）。5〜6週目に試遊と直し。広告と購入のつなぎこみは試遊のあと。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="sec" id="s13">
+  <div class="sec-head"><span class="sec-no">13</span><h2>ほかの候補と見送った案</h2></div>
+  <div class="tbl wide keycol">
+    <table>
+      <thead><tr><th>案</th><th>中身</th><th>扱い</th></tr></thead>
+      <tbody>
+        <tr><td>実家の部屋（第4版まで）</td><td>縁側・台所・物置など、実家の部屋を編み直す</td><td>見送り。落ち着いているが、場面の変化と笑える場面が少なかった。毛糸の町のおつかいに置きかえた</td></tr>
+        <tr><td>買い切り・広告なし（第4版まで）</td><td>最初の章は無料、あとは1冊ずつ買い切り</td><td>見送り。お助けアイテムを動画と購入で手に入れる形に変えた。そのかわり、年配の人が困らない決まりを5章にまとめた</td></tr>
+        <tr><td>はさみ（お助けアイテム）</td><td>好きな1マスだけほどける</td><td>見送り。初心者ボットの成功が43%→48%とほとんど変わらなかった</td></tr>
+        <tr><td>点線の枠ならどこにでも編める（第3版）</td><td>決められた点線の枠なら、どこにでも編める</td><td>見送り。自動で作った150面の97%が「全部ほどいてから編み直す」で解け、最短2手の面が77%と浅かった</td></tr>
+        <tr><td>1手もどす（第3版）</td><td>1手前に戻せる</td><td>見送り。選んでから決める操作で押しまちがいがなくなった。もどせるとゲームオーバーの意味が消える</td></tr>
+        <tr><td>余った毛糸で贈り物を編む（第2版）</td><td>余った毛糸が多いほど、章の終わりの贈り物が大きくなる</td><td>見送り。部屋をたくさんほどくほど得をする仕組みだった</td></tr>
+        <tr><td>織物の糸を抜いて模様を合わせる</td><td>よこ糸・たて糸を抜いて、お手本の模様にする</td><td>見送り。総当たりで調べると、穴の位置を見るだけで抜く糸がほぼ決まり、推理にならなかった</td></tr>
+        <tr><td>ねこと毛糸玉（第1版）</td><td>同じ色の毛糸玉を押して消す</td><td>見送り。仕組みはよくある「消す系」と同じ</td></tr>
+        <tr><td>まあるく おさめて</td><td>家族全員の願いをかなえる、ちゃぶ台の席決めパズル</td><td>見送り。読む量が多く、ぱっとわからない</td></tr>
+        <tr><td>物干しパズル／ししおどしの唱歌</td><td>日が動くと影が動く物干し／水の流れで唱歌を鳴らす</td><td>候補として残す</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="sec" id="s14">
+  <div class="sec-head"><span class="sec-no">14</span><h2>出典</h2></div>
+  <ol class="refs">
+    <li id="r1">AARP Research（2023）The 50-Plus Gamer of Today and Tomorrow　<a href="https://www.aarp.org/pri/topics/social-leisure/activities-interests/2023-gamers-50-plus/">aarp.org</a></li>
+    <li id="r2">AARP Research（2024）Older Gamers Want Age-Friendly Games　<a href="https://www.aarp.org/pri/topics/technology/internet-media-devices/gamer-accessibility-preferences-older-adults/">aarp.org</a></li>
+    <li id="r3">NTTドコモ モバイル社会研究所（2026）シニアのスマホ保有　<a href="https://www.moba-ken.jp/project/seniors/seniors20260323.html">moba-ken.jp</a></li>
+    <li id="r4">ハルメク ホールディングス（2023）シニア女性のゲームに関する調査　<a href="https://www.halmek-holdings.co.jp/news/press/2023/us2s8vg77/">halmek-holdings.co.jp</a></li>
+    <li id="r5">App Annie（2022）State of Mobile 2022（20ページ）　<a href="https://anacecilia.digital/wp-content/uploads/2022/01/app_annie__state_of_mobile_2022__en.pdf">PDF（転載先）</a></li>
+    <li id="r6">4Gamer.net（2022）App Ape による年代別の利用者構成　<a href="https://www.4gamer.net/games/522/G052249/20220809093/">4gamer.net</a></li>
+    <li id="r7">Naavik（Royal Match の平均手数）　<a href="https://naavik.co/digest/why-dream-games-success-is-a-challenge-to-replicate/">naavik.co</a></li>
+    <li id="r8">mobilegamer.biz（King による Candy Crush の難しい面の分析）　<a href="https://mobilegamer.biz/how-king-defines-a-good-candy-crush-saga-level-and-why-it-constantly-prunes-the-bad-ones/">mobilegamer.biz</a></li>
+    <li id="r9">Deconstructor of Fun（2021）Royal Match の分析　<a href="https://www.deconstructoroffun.com/blog/2021/3/21/royal-match-the-new-king-from-turkey">deconstructoroffun.com</a></li>
+    <li id="r10">Nap, de Kort & IJsselsteijn（2009）Senior gamers: preferences, motivations and needs. Gerontechnology 8(4)　<a href="https://journal.gerontechnology.org/archives/1054-1055-1-PB.pdf">PDF</a></li>
+    <li id="r11">Blocker, Wright & Boot（2014）Gaming preferences of aging generations. Gerontechnology 12(3)　<a href="https://journal.gerontechnology.org/archives/2258-2731-1-PB.pdf">PDF</a></li>
+    <li id="r12">Rienzo & Cubillos（2020）Playability and player experience in digital games for elderly. Sensors　<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7411672/">PMC</a></li>
+    <li id="r13">De Schutter（2011）Never too old to play. Games and Culture 6(2)　<a href="https://doi.org/10.1177/1555412010364978">doi</a></li>
+    <li id="r14">Kobayashi et al.（2011）Elderly user evaluation of mobile touchscreen interactions. INTERACT 2011　<a href="https://savie.ca/BaseConnaissances/upload/pdf/3034_kobayashietal_2011_elderlyuser_evaluation_of_mobile_touchscreen_Index3034.pdf">PDF</a></li>
+    <li id="r15">Leitão & Silva（2012）Target and spacing sizes for smartphone user interfaces for older adults. PLoP 2012　<a href="https://plopcon.org/proceedings/plop/2012/papers/05-leitao.pdf">PDF</a></li>
+    <li id="r16">Findlater et al.（2013）Age-related differences in performance with touchscreens. CHI 2013　<a href="https://makeabilitylab.cs.washington.edu/media/publications/Findlater_AgeRelatedDifferencesInPerformanceWithTouchscreensComparedToTraditionalMouseInput_CHI2013.pdf">PDF</a></li>
+    <li id="r17">W3C（2023）Web Content Accessibility Guidelines（WCAG）2.2　<a href="https://www.w3.org/TR/WCAG22/">w3.org</a></li>
+    <li id="r18">W3C（2008）Web Accessibility for Older Users: A Literature Review　<a href="https://www.w3.org/TR/wai-age-literature/">w3.org</a></li>
+    <li id="r19">JIS S 0013:2011 高齢者・障害者配慮設計指針 消費生活製品の報知音　<a href="https://kikakurui.com/s/S0013-2011-01.html">kikakurui.com</a></li>
+    <li id="r20">JIS S 0033:2006 高齢者・障害者配慮設計指針 視覚表示物 色の組合せ方法　<a href="https://kikakurui.com/s/S0033-2006-01.html">kikakurui.com</a></li>
+    <li id="r21">Game Accessibility Guidelines（Basic）　<a href="https://gameaccessibilityguidelines.com/basic/">gameaccessibilityguidelines.com</a></li>
+    <li id="r22">Apple Human Interface Guidelines: Accessibility　<a href="https://developer.apple.com/design/human-interface-guidelines/accessibility">developer.apple.com</a></li>
+    <li id="r23">Harada, Natelson Love & Triebel（2013）Normal cognitive aging. Clinics in Geriatric Medicine　<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4015335/">PMC</a></li>
+    <li id="r24">Nielsen Norman Group（2013）Usability for Senior Citizens: Improved, But Still Lacking　<a href="https://www.nngroup.com/articles/usability-seniors-improvements/">nngroup.com</a></li>
+    <li id="r25">NTTドコモ モバイル社会研究所（2026）シニアのスマホの困りごと　<a href="https://www.moba-ken.jp/project/seniors/20260914.html">moba-ken.jp</a></li>
+    <li id="r26">イオン（2019）50〜79歳のスマホ利用に関する調査　<a href="https://prtimes.jp/main/html/rd/p/000002039.000007505.html">prtimes.jp</a></li>
+    <li id="r27">国民生活センター（2024年5月29日）広告の誤タップによる意図しない契約　<a href="https://www.kokusen.go.jp/news/data/n-20240529_2.html">kokusen.go.jp</a></li>
+    <li id="r28">Cochrane（Gates et al., 2020）健常な高齢者へのコンピュータ認知訓練　<a href="https://www.cochrane.org/evidence/CD012277_computerised-cognitive-training-maintaining-cognitive-function-cognitively-healthy-people-late-life">cochrane.org</a></li>
+    <li id="r29">Stanford Center on Longevity ほか（2014）A Consensus on the Brain Training Industry from the Scientific Community　<a href="https://longevity.stanford.edu/a-consensus-on-the-brain-training-industry-from-the-scientific-community-2">stanford.edu</a></li>
+    <li id="r30">米国連邦取引委員会（2016）Lumosity への措置　<a href="https://www.ftc.gov/news-events/news/press-releases/2016/01/lumosity-pay-2-million-settle-ftc-deceptive-advertising-charges-its-brain-training-program">ftc.gov</a></li>
+    <li id="r31">消費者庁　不実証広告規制に関する指針（景品表示法7条2項）　<a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/guideline/pdf/100121premiums_34.pdf">caa.go.jp</a></li>
+    <li id="r32">Pew Research Center（2014）Older Adults and Technology Use　<a href="https://www.pewresearch.org/internet/2014/04/03/older-adults-and-technology-use/">pewresearch.org</a></li>
+    <li id="r33">Unravel It! - Yarn Puzzle（Google Play）　<a href="https://play.google.com/store/apps/details?id=com.kiwifun.game.android.unravel.yarn&amp;hl=en_US">play.google.com</a></li>
+    <li id="r34">Wool Craze - 毛糸外し外す ソートパズルのゲーム（App Store）　<a href="https://apps.apple.com/jp/app/wool-craze-%E6%AF%9B%E7%B3%B8%E5%A4%96%E3%81%97%E5%A4%96%E3%81%99-%E3%82%BD%E3%83%BC%E3%83%88%E3%83%91%E3%82%BA%E3%83%AB%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0/id6744317674">apps.apple.com</a></li>
+    <li id="r35">Thread Jam - Untangle 3D Ropes（App Store）　<a href="https://apps.apple.com/us/app/thread-jam-untangle-3d-ropes/id6736898352">apps.apple.com</a></li>
+    <li id="r36">Yarn Fever! 毛糸を外すパズルゲーム（App Store）　<a href="https://apps.apple.com/jp/app/yarn-fever-%E6%AF%9B%E7%B3%B8%E3%82%92%E5%A4%96%E3%81%99%E3%83%91%E3%82%BA%E3%83%AB%E3%82%B2%E3%83%BC%E3%83%A0/id6747875092">apps.apple.com</a></li>
+    <li id="r37">第一生命経済研究所　ポイ活の利用に関するレポート（50〜79歳）　<a href="https://www.dlri.co.jp/report/ld/477142.html">dlri.co.jp</a></li>
+    <li id="r38">MMD研究所　シニアのスマホ利用に関する調査（契約や利用で人の助けを借りた割合）　<a href="https://mmdlabo.jp/investigation/detail_2396.html">mmdlabo.jp</a></li>
+  </ol>
+  <p class="note">1〜32・37・38の数値は、調査担当が各ページを開いて確かめた内容から引いています。33〜36は、似た仕組みのゲームがないかを2026年9月に検索したときの結果です。6章・5章・9章の数字は、この企画書の決まりどおりに動く試作の計算機で測った値です（ボットはお年寄りの代わりの目安）。</p>
+</section>
+
+<p class="foot">この企画書は第5版です。値段や数値の目安は仮の値で、試作と試遊で確かめてから決めます。</p>
+</main>
